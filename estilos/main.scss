@@ -1,0 +1,463 @@
+@use 'variables';
+@use 'mixins';
+
+//Común a todos los htmls
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: variables.$font;
+}
+
+//perteneciente al login.html
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    gap: 20px;
+}
+
+img{
+    width: 216px;
+    max-width: 80%;
+    margin: 80px auto 0 auto;
+    justify-content: center;
+}
+
+h2{
+    color: variables.$colorPrimario;
+    font-size: 30px;
+    font-family: variables.$font;
+}
+
+input{
+    background-color: variables.$colorSecundario;
+    color: variables.$colorTextos;
+    padding: 14px 12px;
+    border:none; //para que no tenga el borde coloreado de negro
+    font-size: 20px;
+}
+
+input::placeholder{
+    color: #313131; //Gris oscuro, no negro, para destacar que es el texto del placeholder
+}
+
+.boton{
+    padding: 14px 12px;
+    background-color: variables.$colorPrimario;
+    font-size: 24px;
+    width: 200px;
+    max-width: 80%;
+    border-radius: 20px;
+    border:none;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.boton:hover{
+    background-color: variables.$colorSecundario;
+    font-weight: bold;
+}
+
+.registrate{
+    color: variables.$colorPrimario;
+    font-size: 24px;
+    padding: 14px 12px;
+    word-wrap: break-word;
+}
+
+//perteneciente al registro
+.campos{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    max-width: 90%;
+    margin: 10px auto;
+}
+
+.filas{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filas p{
+    width: 100px;
+    margin: 0;
+    text-align: left;
+    color: variables.$colorPrimario;
+    font-size: 24px;
+}
+
+.filas input{
+    flex: 1;
+    min-width: 120px;
+}
+
+
+//dashboard
+
+    //barra de arriba, común a otras paginas
+    .banda{
+        width: 100vw;
+        height: 180px;
+        background-color: #e8e5dd;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    .bandaDerecha{
+        display: flex;
+        gap: 10px;
+        padding-right: 200px;
+        align-items: flex-end;
+    }
+
+    .bandaIcono{
+        width: 160px;
+        padding-left: 40;
+    }
+
+    .bandaTexto{
+        font-size: 32px;
+        color: variables.$colorPrimario;
+        font-family: variables.$font;
+        font-weight: bold;
+        align-items: flex-end;
+        margin: 0;
+    }
+
+    .bandaMenu{
+        display:flex;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+    }
+
+//Unico de esta pagina
+    .informacion{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 2px;
+        column-gap: 80px;
+        max-width: 800px;
+        margin: 40px auto;
+        align-items: center;
+    }
+
+    .mapa{
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .mapa img{
+        width: 100%;
+    }
+
+    .datos{
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-self: center;
+    }
+
+    .datoFila{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        line-height: 4;
+    }
+
+    .datoFila p{
+        color: variables.$colorPrimario;
+        font-size: 22px;
+    }
+
+    .datoFila img{
+        width: 40px;
+        height: 40px;
+        margin: 0;
+    }
+
+    .logros{
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logros img{
+        width: 400px;
+    }
+
+    .historial{
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .historial img{
+        width: 400px;
+    }
+
+//Desplegable, común a otras páginas
+    .menu{
+        position: relative;
+    }
+
+    .desplegable{
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: variables.$colorPrimario;
+        list-style: none;
+        padding: 10px 0;
+        width: 200px;
+        border-radius: 8px;
+        z-index: 10;
+    }
+
+    .desplegable li{
+        padding: 10px 20px;
+        cursor: pointer;
+        color: variables.$colorTextos;
+        color: variables.$colorTextos;
+        font-size: 22px;
+    }
+
+    .desplegable li:hover{
+        background-color: variables.$colorSecundario;
+        font-weight: bold;
+    }
+
+    .desplegable li a {
+        color: variables.$colorTextos;
+        text-decoration: none; /* Quita el subrayado */
+    }
+fila
+    .desplegable li:active,.desplegable li.selected{
+        color: var(--colorTextos); /* Mantiene el mismo color */
+        text-decoration: none;
+    }
+
+//perteneciente a la pantalla de logros
+.columnasLogros{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+    padding: 80px 20px;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.fila1, .fila2{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    width: 100%;
+}
+
+.logro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+
+.logro img{
+    display: block;
+    margin: 0;
+    width: 200px; /* ajusta el tamaño que necesites */
+    height: auto;
+}
+
+.fila2 img{
+    filter: brightness(30%);
+}
+
+
+.logro p{
+    text-align: left;
+    color: variables.$colorPrimario;
+    font-size: 18px;
+    font-family: variables.$font;
+    line-height: 2;
+    margin: 0;
+}
+
+
+//Calendario
+.calendario{
+    width: 350px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 40px auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Header con flechas y título centrado */
+.calendarioHeader{
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar__nav-btn{
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Contenedor del título */
+.calendar__title-container{
+    display: flex;
+    justify-content: center;
+}
+
+.calendarioTitulo{
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Grid de días */
+.calendarioGrid{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 10px;
+}
+
+/* Nombres de días */
+.calendarNombreDia{
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 5px;
+    text-align: center;
+    color: #444;
+}
+
+/* Celdas clicables */
+.calendar__day{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 6px;
+    background: #fafafa;
+    transition: background 0.2s ease;
+}
+
+.calendar__day:hover{
+    background: #e0e0e0;
+}
+
+/* Celdas vacías */
+.calendar__empty{
+    height: 40px;
+}
+
+.datoHistorial{
+    display: flex;
+    flex-direction: column; /* Cada <p> uno encima del otro */
+    align-items: center;    /* Centra todo horizontalmente */
+    gap: 40px;
+}
+
+.datoHistorial p{
+    display: flex;
+    align-items: center;
+    gap: 8px;               /* Espacio entre texto e imagen */
+    font-size: 22px;
+    margin: 0;
+    color: variables.$colorPrimario;
+}
+
+.datoHistorial img{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+}
+
+//Perfil
+.tresColumnas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 100px;
+    max-width: 1200px;
+    margin: 4px auto;
+    align-items: center;
+
+}
+
+.columna{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.columnaIzquierda img{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.columnaCentral p{
+    color: variables.$colorPrimario;
+    font-weight: bold;
+    padding: 4px;
+}
+
+.columnaDerecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.columnaDerecha p{
+    color: variables.$colorPrimario;
+    padding: 8px;
+}
+
+.columnaBoton{
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background-color: variables.$colorPrimario;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.columnaBoton:hover{
+    background-color: variables.$colorSecundario;
+}
