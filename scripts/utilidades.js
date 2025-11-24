@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const botonRegistro = document.getElementById('confirmar2');
+    if (botonRegistro) {
+        botonRegistro.addEventListener('click', () => {
+            // Redirige al dashboard sin necesidad de iniciar sesión
+            window.location.href = '/TrazapieFront/dashboard.html';
+        });
+    }
+
+
+
     // -------------------------
     // Funcionalidad desplegable del menú
     // -------------------------
