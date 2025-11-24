@@ -19,6 +19,8 @@
     "17": { "pasos": 3000, "calorias": 180, "tiempo": 26 },
     "18": { "pasos": 11200, "calorias": 710, "tiempo": 98 },
     "19": { "pasos": 3500, "calorias": 210, "tiempo": 30 },
-    "20": { "pasos": 5000, "calorias": 350, "tiempo": 55 }
+    "20": { "pasos": 5000, "calorias": 350, "tiempo": 55 },
+    "21": { "pasos": 1900, "calorias": 290, "tiempo": 35 },
+    "22": { "pasos": 500, "calorias": 30, "tiempo": 5 }
   }
 }
