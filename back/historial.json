@@ -1,0 +1,24 @@
+{
+  "2025-11": {
+    "1": { "pasos": 4560, "calorias": 290, "tiempo": 42 },
+    "2": { "pasos": 6200, "calorias": 410, "tiempo": 63 },
+    "3": { "pasos": 5400, "calorias": 330, "tiempo": 55 },
+    "4": { "pasos": 3000, "calorias": 200, "tiempo": 25 },
+    "5": { "pasos": 10500, "calorias": 650, "tiempo": 91 },
+    "6": { "pasos": 9000, "calorias": 580, "tiempo": 76 },
+    "7": { "pasos": 7800, "calorias": 500, "tiempo": 70 },
+    "8": { "pasos": 2000, "calorias": 140, "tiempo": 18 },
+    "9": { "pasos": 9800, "calorias": 620, "tiempo": 83 },
+    "10": { "pasos": 4000, "calorias": 250, "tiempo": 37 },
+    "11": { "pasos": 8500, "calorias": 560, "tiempo": 72 },
+    "12": { "pasos": 1500, "calorias": 100, "tiempo": 15 },
+    "13": { "pasos": 5000, "calorias": 350, "tiempo": 55 },
+    "14": { "pasos": 7300, "calorias": 470, "tiempo": 68 },
+    "15": { "pasos": 4000, "calorias": 230, "tiempo": 28 },
+    "16": { "pasos": 6000, "calorias": 410, "tiempo": 64 },
+    "17": { "pasos": 3000, "calorias": 180, "tiempo": 26 },
+    "18": { "pasos": 11200, "calorias": 710, "tiempo": 98 },
+    "19": { "pasos": 3500, "calorias": 210, "tiempo": 30 },
+    "20": { "pasos": 5000, "calorias": 350, "tiempo": 55 }
+  }
+}

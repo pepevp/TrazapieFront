@@ -1,68 +1,60 @@
 <html>
-    <!DOCTYPE html>
-    <head>
-        <link rel="stylesheet" href="estilos/main.css">
-    </head>
+<head>
+    <link rel="stylesheet" href="estilos/main.css">
+</head>
+<body>
+<main class="page">
 
-    <body>
-        <main class="page">
-
-            <header class="banda">
-                <div class="bandaIzquierda">
-                    <a href="/dashboard.html">
-                        <img src="/img/logoTrazapie3.png" alt="icono" class="bandaIcono">
-                    </a>
-                </div>
-                    <div class="bandaDerecha">
-                    <p class="bandaTexto">Antonio García</p>
-                    <div class="menu">
-                        <img src="/img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
-                        <ul class="desplegable" id="menuDesplegable">
-                            <li>
-                                <a href="dashboard.html">Página de inicio</a>
-                            </li>
-                            <li>
-                                <a href="Perfil.html">Perfil</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Cerrar sesión</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
-
-            <div class="calendario">
-                <div class="calendarioHeader">
-                    <button class="calendar__nav-btn calendar__nav-btn--prev" id="prev">&#10094;</button>
-
-                    <div class="calendar__title-container">
-                        <h2 class="calendarioTitulo" id="month-year"></h2>
-                    </div>
-
-                    <button class="calendar__nav-btn calendar__nav-btn--next" id="next">&#10095;</button>
-                </div>
-
-                <div class="calendarioGrid" id="calendar-grid">
-                    <div class="calendarNombreDia">Lun</div>
-                    <div class="calendarNombreDia">Mar</div>
-                    <div class="calendarNombreDia">Mié</div>
-                    <div class="calendarNombreDia">Jue</div>
-                    <div class="calendarNombreDia">Vie</div>
-                    <div class="calendarNombreDia">Sáb</div>
-                    <div class="calendarNombreDia">Dom</div>
-                </div>
+    <header class="banda">
+        <div class="bandaIzquierda">
+            <a href="/dashboard.html">
+                <img src="/img/logoTrazapie3.png" alt="icono" class="bandaIcono">
+            </a>
+        </div>
+        <div class="bandaDerecha">
+            <p class="bandaTexto">Antonio García</p>
+            <div class="menu">
+                <img src="/img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
+                <ul class="desplegable" id="menuDesplegable">
+                    <li><a href="dashboard.html">Página de inicio</a></li>
+                    <li><a href="Perfil.html">Perfil</a></li>
+                    <li><a href="login.html">Cerrar sesión</a></li>
+                </ul>
             </div>
+        </div>
+    </header>
 
-            <div class="datoHistorial">
-                <p>Pasos: 5000<img src="/img/pies.png" alt="Pasos"></p>
-                <p>Calorías: 350<img src="/img/corazon.png" alt="Calorías"></p>
-                <p>Tiempo de actividad: 55 minutos<img src="/img/reloj.png" alt="Tiempo"></p>
+    <div class="calendario">
+        <div class="calendarioHeader">
+            <button class="calendar__nav-btn calendar__nav-btn--prev" id="prev">&#10094;</button>
+            <div class="calendar__title-container">
+                <h2 class="calendarioTitulo" id="month-year"></h2>
             </div>
+            <button class="calendar__nav-btn calendar__nav-btn--next" id="next">&#10095;</button>
+        </div>
 
-            
-    <footer>
-        <script src="/scripts/calendario.js"></script>
-        <script src="scripts/utilidades.js"></script>
-    </footer>
+        <div class="calendarioGrid" id="calendar-grid">
+            <div class="calendarNombreDia">Lun</div>
+            <div class="calendarNombreDia">Mar</div>
+            <div class="calendarNombreDia">Mié</div>
+            <div class="calendarNombreDia">Jue</div>
+            <div class="calendarNombreDia">Vie</div>
+            <div class="calendarNombreDia">Sáb</div>
+            <div class="calendarNombreDia">Dom</div>
+        </div>
+    </div>
+
+    <div class="datoHistorial">
+        <p id="p-pasos">Pasos: <span id="valor-pasos"></span> <img src="img/pies.png" alt="Pasos"></p>
+        <p id="p-calorias">Calorías: <span id="valor-calorias"></span> <img src="img/corazon.png" alt="Calorías"></p>
+        <p id="p-tiempo">Tiempo de actividad: <span id="valor-tiempo"></span> <img src="img/reloj.png" alt="Tiempo"></p>
+    </div>
+
+</main>
+
+<footer>
+    <script src="/scripts/calendario.js"></script>
+    <script src="scripts/utilidades.js"></script>
+</footer>
+</body>
 </html>
