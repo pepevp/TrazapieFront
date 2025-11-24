@@ -43,8 +43,8 @@
       }
     },
     {
-      "username": "maria",
-      "email": "maria@example.com",
+      "username": "marina",
+      "email": "marina@example.com",
       "password": "1111",
       "edad": 25,
       "peso": 65,
@@ -54,7 +54,16 @@
         "2025-11": {
           "1": { "pasos": 6200, "calorias": 330, "tiempo": 55 },
           "2": { "pasos": 7100, "calorias": 370, "tiempo": 62 },
-          "4": { "pasos": 4800, "calorias": 250, "tiempo": 43 }
+          "3": { "pasos": 5400, "calorias": 280, "tiempo": 45 },
+          "4": { "pasos": 4800, "calorias": 250, "tiempo": 43 },
+          "5": { "pasos": 5000, "calorias": 300, "tiempo": 50 },
+          "6": { "pasos": 6500, "calorias": 360, "tiempo": 60 },
+          "7": { "pasos": 7000, "calorias": 390, "tiempo": 65 },
+          "8": { "pasos": 4800, "calorias": 270, "tiempo": 48 },
+          "9": { "pasos": 5300, "calorias": 310, "tiempo": 52 },
+          "10": { "pasos": 6000, "calorias": 350, "tiempo": 58 },
+          "11": { "pasos": 4900, "calorias": 280, "tiempo": 45 },
+          "12": { "pasos": 5100, "calorias": 300, "tiempo": 50 }
         }
       }
     },
@@ -69,10 +78,17 @@
       "historial": {
         "2025-10": {
           "5": { "pasos": 9000, "calorias": 480, "tiempo": 85 },
-          "6": { "pasos": 7600, "calorias": 395, "tiempo": 72 }
+          "6": { "pasos": 7600, "calorias": 395, "tiempo": 72 },
+          "7": { "pasos": 8200, "calorias": 430, "tiempo": 78 },
+          "8": { "pasos": 6000, "calorias": 320, "tiempo": 55 },
+          "9": { "pasos": 7300, "calorias": 400, "tiempo": 65 }
         },
         "2025-11": {
-          "1": { "pasos": 4200, "calorias": 220, "tiempo": 40 }
+          "1": { "pasos": 4200, "calorias": 220, "tiempo": 40 },
+          "2": { "pasos": 5000, "calorias": 270, "tiempo": 50 },
+          "3": { "pasos": 5800, "calorias": 320, "tiempo": 55 },
+          "4": { "pasos": 6300, "calorias": 350, "tiempo": 60 },
+          "5": { "pasos": 7000, "calorias": 380, "tiempo": 65 }
         }
       }
     }

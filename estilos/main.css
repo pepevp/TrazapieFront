@@ -23,7 +23,7 @@ main {
   gap: 20px;
 }
 
-img {
+.logo {
   width: 216px;
   max-width: 80%;
   margin: 80px auto 0 auto;
@@ -116,16 +116,16 @@ input::placeholder {
 .bandaDerecha {
   display: flex;
   gap: 10px;
-  padding-right: 200px;
-  align-items: flex-end;
+  padding-right: 300px;
+  align-items: center;
 }
 
 .bandaIzquierda {
-  padding-left: 200px;
+  padding-left: 300px;
 }
 
 .bandaIcono {
-  width: 160px;
+  width: 200px;
   padding-left: 40;
 }
 
@@ -134,7 +134,6 @@ input::placeholder {
   color: #3C887E;
   font-family: "Inter", sans-serif;
   font-weight: bold;
-  align-items: flex-end;
   margin: 0;
 }
 
@@ -198,6 +197,7 @@ input::placeholder {
   grid-column: 1/2;
   grid-row: 2/3;
   display: flex;
+  margin-top: 60px;
   justify-content: center;
   align-items: center;
 }
@@ -210,6 +210,7 @@ input::placeholder {
   grid-column: 2/3;
   grid-row: 2/3;
   display: flex;
+  margin-top: 60px;
   justify-content: center;
   align-items: center;
 }
@@ -433,7 +434,7 @@ fila .desplegable li:active,
 .columnaDerecha {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: justify;
   margin-top: 80px;
 }
 
@@ -444,12 +445,13 @@ fila .desplegable li:active,
 
 .columnaBoton {
   margin-top: 20px;
+  max-width: 120px;
   padding: 12px 20px;
   border: none;
   background-color: #3C887E;
   color: white;
   font-size: 18px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
 }
 

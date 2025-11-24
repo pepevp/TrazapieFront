@@ -5,33 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const usuarioActual = JSON.parse(usuarioActualStr);
 
     // -------------------------
-    // 1️⃣ Mostrar nombre de usuario en la barra
-    // -------------------------
-    const nombreUsuarioElem = document.getElementById("nombreUsuario");
-    if (nombreUsuarioElem) nombreUsuarioElem.innerText = usuarioActual.username ?? "--";
-
-    // -------------------------
-    // 2️⃣ Calcular datos de actividad del día actual
-    // -------------------------
-    const fechaHoy = new Date();
-    const anio = fechaHoy.getFullYear();
-    const mes = String(fechaHoy.getMonth() + 1).padStart(2, "0"); // 0-index
-    const dia = String(fechaHoy.getDate()).padStart(2, "0");
-
-    const historialMes = usuarioActual.historial?.[`${anio}-${mes}`] ?? {};
-    const registroHoy = historialMes?.[String(Number(dia))] ?? { pasos: 0, calorias: 0, tiempo: 0 };
-
-    // Actualizar el HTML
-    const pasosElem = document.getElementById("pasosAct");
-    const caloriasElem = document.getElementById("caloriasAct");
-    const tiempoElem = document.getElementById("tiempoAct");
-
-    if (pasosElem) pasosElem.innerText = `Pasos: ${registroHoy.pasos}`;
-    if (caloriasElem) caloriasElem.innerText = `Calorías: ${registroHoy.calorias}`;
-    if (tiempoElem) tiempoElem.innerText = `Tiempo de actividad: ${registroHoy.tiempo} min`;
-
-    // -------------------------
-    // 3️⃣ Map con Leaflet mostrando ubicación actual
+    //Map con Leaflet mostrando ubicación actual
     // -------------------------
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
