@@ -2,6 +2,10 @@
     <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
         <link rel="stylesheet" href="/TrazapieFront/estilos/main.css">
     </head>
 
@@ -33,9 +37,7 @@
             </header>
 
             <div class="informacion">
-                <div class="mapa">
-                    <img src="/TrazapieFront/img/mapa.png">
-                </div>
+                <div class="mapa" id="mapa" style="height: 300px;"></div>
 
                 <div class="datos">
                     <div class="datoFila">
@@ -69,5 +71,6 @@
     <footer>
         <script src="/TrazapieFront/scripts/utilidades.js"></script>
         <script src="/TrazapieFront/scripts/dashboard.js"></script>
+        <script src="/TrazapieFront/scripts/mapa.js"></script>
     </footer>
 </html>
