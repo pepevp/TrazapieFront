@@ -1,53 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const inputEmail = document.querySelector('input[type="email"]');
-    const inputPassword = document.querySelector('input[type="password"]');
+    const inputEmail = document.getElementById("emailLogin"); // Usando el ID del HTML
+    const inputPassword = document.getElementById("passLogin");
     const btnConfirmar = document.getElementById("confirmar");
     const loginError = document.getElementById("loginError");
 
-    btnConfirmar.addEventListener("click", async (e) => {
-        e.preventDefault(); // evita recarga
-        loginError.textContent = ""; // limpia mensaje anterior
+    if(btnConfirmar) {
+        btnConfirmar.addEventListener("click", async (e) => {
+            e.preventDefault();
+            loginError.textContent = "Verificando...";
 
-        const email = inputEmail.value.trim();
-        const password = inputPassword.value.trim();
+            const email = inputEmail.value.trim();
+            const password = inputPassword.value.trim();
 
-        // 1️⃣ Validar campos vacíos
-        if (!email || !password) {
-            loginError.textContent = "Por favor ingresa tu correo y contraseña.";
-            return;
-        }
-
-        try {
-            // 2️⃣ Cargar JSON de usuarios
-            const response = await fetch("/TrazapieFront/back/usuarios.json"); // ruta relativa
-            if (!response.ok) {
-                loginError.textContent = "No se pudo cargar la lista de usuarios.";
+            if (!email || !password) {
+                loginError.textContent = "Por favor ingresa correo y contraseña.";
                 return;
             }
 
-            let data;
             try {
-                data = await response.json();
-            } catch {
-                loginError.textContent = "El archivo de usuarios no es JSON válido.";
-                return;
+                // RUTA RELATIVA: Ya no necesita http://localhost:3000
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem("usuarioId", data.userId);
+                    localStorage.setItem("usuarioNombre", data.nombre);
+                    // REDIRECCIÓN RELATIVA
+                    window.location.href = "dashboard.html";
+                } else {
+                    loginError.textContent = "❌ " + (data.message || "Error de acceso");
+                }
+            } catch (err) {
+                console.error("Error de conexión:", err);
+                loginError.textContent = "No se pudo conectar con el servidor.";
             }
-
-            // 3️⃣ Buscar usuario
-            const usuario = data.usuarios.find(u => u.email === email && u.password === password);
-
-            if (!usuario) {
-                loginError.textContent = "Correo o contraseña incorrectos. Intenta de nuevo.";
-                return; // ❌ Detiene aquí, no hay redirección
-            }
-
-            // 4️⃣ Usuario válido
-            localStorage.setItem("usuarioActual", JSON.stringify(usuario));
-            window.location.href = "/TrazapieFront/dashboard.html"; // solo aquí redirige si es correcto
-
-        } catch (err) {
-            console.error("Error cargando usuarios:", err);
-            loginError.textContent = "No se pudo validar el login. Intenta más tarde.";
-        }
-    });
+        });
+    }
 });

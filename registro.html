@@ -1,49 +1,61 @@
-<html>
-    <!DOCTYPE html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/TrazapieFront/estilos/main.css">
-    </head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Trazapié</title>
+    <link rel="stylesheet" href="estilos/main.css">
+</head>
 
-    <body>
-        <main>
-            <img src="/TrazapieFront/img/logoTrazapie.png" class="logo" alt="logo">
-            <div class="campos">
-                <div class="filas">
-                    <p>Nombre</p>
-                    <input class="box" type="text" placeholder="Texto Ejemplo">
-                </div>
+<body>
+    <main>
+        <img src="img/logoTrazapie3.png" class="logo" alt="logo" style="display: block; margin: 0 auto; max-width: 200px;">
+        
+        <div class="campos">
+            <div class="filas">
+                <p>Nombre</p>
+                <input id="regNombre" class="box" type="text" placeholder="Tu nombre">
             </div>
-            <div class="campos">
-                <div class="filas">
-                    <p>Email</p>
-                    <input class="box" type="text" placeholder="Texto Ejemplo">
-                </div>
-            </div>
+        </div>
 
-            <div class="campos">
-                <div class="filas">
-                    <p>Edad</p>
-                    <input class="box" type="text" placeholder="Texto Ejemplo">
-                </div>
+        <div class="campos">
+            <div class="filas">
+                <p>Email</p>
+                <input id="regEmail" class="box" type="email" placeholder="correo@ejemplo.com">
             </div>
-            <div class="campos">
-                <div class="filas">
-                    <p>Peso</p>
-                    <input class="box" type="text" placeholder="Texto Ejemplo">
-                </div>
+        </div>
+
+        <div class="campos">
+            <div class="filas">
+                <p>Edad</p>
+                <input id="regEdad" class="box" type="number" placeholder="Ej: 25">
             </div>
-            <div class="campos">
-                <div class="filas">
-                    <p>Altura</p>
-                    <input class="box" type="text" placeholder="Texto Ejemplo">
-                </div>
+        </div>
+
+        <div class="campos">
+            <div class="filas">
+                <p>Peso (kg)</p>
+                <input id="regPeso" class="box" type="number" placeholder="Ej: 70">
             </div>
-            <button id="confirmar2" class="boton">Confirmar</button>
-        </main>
-    </body>
-    <footer>
-        <script src="/TrazapieFront/scripts/utilidades.js"></script>
-    </footer>
+        </div>
+
+        <div class="campos">
+            <div class="filas">
+                <p>Altura (cm)</p>
+                <input id="regAltura" class="box" type="number" placeholder="Ej: 175">
+            </div>
+        </div>
+
+        <button id="confirmar2" class="boton">Confirmar Registro</button>
+        
+        <div id="registroMsg" style="text-align: center; margin-top: 10px; font-weight: bold;"></div>
+
+        <p style="text-align: center; margin-top: 15px;">
+            <a href="login.html" class="registrate">¿Ya tienes cuenta? Entra aquí</a>
+        </p>
+    </main>
+
+    <script src="scripts/utilidades.js"></script>
+    <script src="scripts/registro.js"></script>
+</body>
 </html>
-

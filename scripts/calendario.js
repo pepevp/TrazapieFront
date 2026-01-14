@@ -1,36 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const monthYear = document.getElementById("month-year");
     const calendarGrid = document.getElementById("calendar-grid");
 
+    // IDs corregidos según tu HTML
     const pasosElem = document.getElementById("valor-pasos");
     const caloriasElem = document.getElementById("valor-calorias");
     const tiempoElem = document.getElementById("valor-tiempo");
 
     let currentDate = new Date();
+    let datosUsuario = null; 
+    const userId = localStorage.getItem("usuarioId") || 'user_001';
 
-    // Obtener usuario logueado
-    const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
-    if (!usuarioActual) {
-        alert("No hay usuario logueado");
-        window.location.href = "login.html";
-        return;
+    async function cargarDatosServidor() {
+        try {
+            const response = await fetch(`http://localhost:3000/api/usuario/${userId}`);
+            if (!response.ok) throw new Error("Error al obtener datos");
+            datosUsuario = await response.json();
+            
+            renderCalendar(currentDate);
+            const hoy = new Date();
+            mostrarDatosDia(hoy.getDate(), hoy.getMonth(), hoy.getFullYear());
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
 
     function renderCalendar(date) {
+        if (!datosUsuario) return;
         const year = date.getFullYear();
         const month = date.getMonth();
-
-        const monthNames = [
-            "Enero","Febrero","Marzo","Abril","Mayo","Junio",
-            "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
-        ];
+        const monthNames = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
         monthYear.textContent = `${monthNames[month]} ${year}`;
 
-        // Limpiar calendario, mantener nombres de días
-        while (calendarGrid.children.length > 7) {
-            calendarGrid.removeChild(calendarGrid.lastChild);
-        }
+        while (calendarGrid.children.length > 7) calendarGrid.removeChild(calendarGrid.lastChild);
 
         const firstDay = new Date(year, month, 1);
         const startDay = firstDay.getDay() === 0 ? 7 : firstDay.getDay();
@@ -43,65 +46,51 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const hoy = new Date();
-        const mesActual = hoy.getMonth();
-        const diaActual = hoy.getDate();
-        const anioActual = hoy.getFullYear();
-
         for (let day = 1; day <= daysInMonth; day++) {
             const cell = document.createElement("div");
             cell.classList.add("calendar__day");
             cell.textContent = day;
 
-            // Solo días anteriores o iguales al actual
-            const esDiaValido = (year < anioActual) ||
-                                 (year === anioActual && month < mesActual) ||
-                                 (year === anioActual && month === mesActual && day <= diaActual);
+            const fechaBusqueda = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+            const tieneDatos = datosUsuario.historial_actividad?.find(a => a.fecha === fechaBusqueda);
 
-            if (!esDiaValido) {
+            if (tieneDatos) cell.classList.add("has-data");
+
+            if (new Date(year, month, day) > hoy) {
                 cell.classList.add("disabled");
             } else {
                 cell.addEventListener("click", () => {
-                    mostrarDatosDia(day, month + 1, year);
+                    document.querySelectorAll('.calendar__day').forEach(d => d.classList.remove('selected'));
+                    cell.classList.add('selected');
+                    mostrarDatosDia(day, month, year);
                 });
             }
-
             calendarGrid.appendChild(cell);
         }
     }
 
-    // Función para actualizar los datos según el día
     function mostrarDatosDia(dia, mes, anio) {
-        const keyMes = `${anio}-${String(mes).padStart(2,"0")}`;
-        const historial = usuarioActual.historial[keyMes];
+        if (!datosUsuario?.historial_actividad) return;
 
-        if (historial && historial[dia]) {
-            const datos = historial[dia];
-            pasosElem.textContent = datos.pasos;
-            caloriasElem.textContent = datos.calorias;
-            tiempoElem.textContent = datos.tiempo;
-        } else {
-            pasosElem.textContent = 0;
-            caloriasElem.textContent = 0;
-            tiempoElem.textContent = 0;
-        }
+        const fechaBusqueda = `${anio}-${String(mes + 1).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
+        const datos = datosUsuario.historial_actividad.find(a => a.fecha === fechaBusqueda);
+
+        // Mapeo directo con los datos de MongoDB
+        pasosElem.textContent = datos ? (datos.pasos || 0) : 0;
+        caloriasElem.textContent = datos ? (datos.calorias || 0) : 0;
+        // Se usa tiempo_minutos que es el nombre en Atlas
+        tiempoElem.textContent = `${datos ? (datos.tiempo_minutos || 0) : 0} min`;
     }
 
-    // Botones para navegar meses
     document.getElementById("prev").addEventListener("click", () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         renderCalendar(currentDate);
     });
 
     document.getElementById("next").addEventListener("click", () => {
-        const hoy = new Date();
-        if (currentDate.getFullYear() < hoy.getFullYear() || currentDate.getMonth() < hoy.getMonth()) {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar(currentDate);
-        }
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate);
     });
 
-    // Al cargar, mostrar calendario y datos del día de hoy
-    renderCalendar(currentDate);
-    const hoy = new Date();
-    mostrarDatosDia(hoy.getDate(), hoy.getMonth() + 1, hoy.getFullYear());
+    cargarDatosServidor();
 });

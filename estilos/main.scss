@@ -1,7 +1,7 @@
 @use 'variables';
 @use 'mixins';
 
-//Común a todos los htmls
+// --- COMÚN A TODOS LOS HTMLs ---
 * {
     margin: 0;
     padding: 0;
@@ -9,13 +9,15 @@
     font-family: variables.$font;
 }
 
-//perteneciente al login.html
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
-.login{
+
+// --- LOGIN & REGISTRO ---
+.login {
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -25,57 +27,59 @@ main{
     gap: 20px;
 }
 
-.logo{
+.logo {
     width: 216px;
     max-width: 80%;
     margin: 80px auto 0 auto;
     justify-content: center;
 }
 
-h2{
+h2 {
     color: variables.$colorPrimario;
     font-size: 30px;
-    font-family: variables.$font;
+    margin-bottom: 10px;
 }
 
-input{
+input {
     background-color: variables.$colorSecundario;
     color: variables.$colorTextos;
     padding: 14px 12px;
-    border:none; //para que no tenga el borde coloreado de negro
+    border: 2px solid transparent;
     font-size: 20px;
+    transition: 0.3s;
+
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid variables.$colorPrimario;
+    }
+
+    &::placeholder {
+        color: #313131;
+    }
 }
 
-input::placeholder{
-    color: #313131; //Gris oscuro, no negro, para destacar que es el texto del placeholder
-}
-
-.boton{
+.boton {
     padding: 14px 12px;
     background-color: variables.$colorPrimario;
     font-size: 24px;
     width: 200px;
     max-width: 80%;
     border-radius: 20px;
-    border:none;
-    margin: 0 auto;
-    margin-top: 10px;
+    border: none;
+    margin: 10px auto 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+
+    &:hover {
+        background-color: variables.$colorSecundario;
+        font-weight: bold;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 }
 
-.boton:hover{
-    background-color: variables.$colorSecundario;
-    font-weight: bold;
-}
-
-.registrate{
-    color: variables.$colorPrimario;
-    font-size: 24px;
-    padding: 14px 12px;
-    word-wrap: break-word;
-}
-
-//perteneciente al registro
-.campos{
+.campos {
     display: flex;
     flex-direction: column;
     width: 400px;
@@ -83,388 +87,353 @@ input::placeholder{
     margin: 10px auto;
 }
 
-.filas{
+.filas {
     display: flex;
     gap: 20px;
     align-items: center;
     flex-wrap: wrap;
-}
-
-.filas p{
-    width: 100px;
-    margin: 0;
-    text-align: left;
-    color: variables.$colorPrimario;
-    font-size: 24px;
-}
-
-.filas input{
-    flex: 1;
-    min-width: 120px;
-}
-
-
-//dashboard
-
-    //barra de arriba, común a otras paginas
-    .banda{
-        width: 100vw;
-        height: 180px;
-        background-color: #e8e5dd;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-
-    .bandaDerecha{
-        display: flex;
-        gap: 10px;
-        padding-right: 300px;
-        align-items: center;
-    }
-
-    .bandaIzquierda{
-        padding-left: 300px;
-    }
-
-    .bandaIcono{
-        width: 200px;
-        padding-left: 40;
-    }
-
-    .bandaTexto{
-        font-size: 32px;
-        color: variables.$colorPrimario;
-        font-family: variables.$font;
-        font-weight: bold;
-        margin: 0;
-    }
-
-    .bandaMenu{
-        display:flex;
-        width: 80px;
-        height: 80px;
-        cursor: pointer;
-    }
-
-//Unico de esta pagina
-    .informacion{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        row-gap: 2px;
-        column-gap: 80px;
-        max-width: 800px;
-        margin: 40px auto;
-        align-items: center;
-    }
-
-    .mapa{
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-    }
-
-    .mapa img{
-        width: 100%;
-    }
-
-    .datos{
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        align-self: center;
-    }
-
-    .datoFila{
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 10px;
-        line-height: 4;
-    }
-
-    .datoFila p{
-        color: variables.$colorPrimario;
-        font-size: 18px;
-    }
-
-    .datoFila img{
-        width: 40px;
-        height: 40px;
-        margin: 0;
-    }
-
-    .logros{
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
-        display: flex;
-        margin-top: 60px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .logros img{
-        width: 400px;
-    }
-
-    .historial{
-        grid-column: 2 / 3;
-        grid-row: 2 / 3;
-        display: flex;
-        margin-top: 60px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .historial img{
-        width: 400px;
-    }
-
-//Desplegable, común a otras páginas
-    .menu{
-        position: relative;
-    }
-
-    .desplegable{
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: variables.$colorPrimario;
-        list-style: none;
-        padding: 10px 0;
-        width: 200px;
-        border-radius: 8px;
-        z-index: 10;
-    }
-
-    .desplegable li{
-        padding: 10px 20px;
-        cursor: pointer;
-        color: variables.$colorTextos;
-        color: variables.$colorTextos;
-        font-size: 22px;
-    }
-
-    .desplegable li:hover{
-        background-color: variables.$colorSecundario;
-        font-weight: bold;
-    }
-
-    .desplegable li a {
-        color: variables.$colorTextos;
-        text-decoration: none; /* Quita el subrayado */
-    }
-fila
-    .desplegable li:active,.desplegable li.selected{
-        color: var(--colorTextos); /* Mantiene el mismo color */
-        text-decoration: none;
-    }
-
-//perteneciente a la pantalla de logros
-.columnasLogros{
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    align-items: center;
-    padding: 80px 20px;
-    max-width: 1800px;
-    margin: 0 auto;
-}
-
-.fila1, .fila2{
-    display: flex;
-    gap: 100px;
-    justify-content: center;
-    width: 100%;
-}
-
-.logro{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-}
-
-.logro img{
-    display: block;
-    margin: 0;
-    width: 200px; /* ajusta el tamaño que necesites */
-    height: auto;
-}
-
-.fila2 img{
-    filter: brightness(30%);
-}
-
-
-.logro p{
-    text-align: left;
-    color: variables.$colorPrimario;
-    font-size: 18px;
-    font-family: variables.$font;
-    line-height: 2;
-    margin: 0;
-}
-
-
-//Calendario
-.calendario{
-    width: 350px;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    margin: 40px auto;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-/* Header con flechas y título centrado */
-.calendarioHeader{
-    display: grid;
-    grid-template-columns: 40px 1fr 40px;
-    align-items: center;
     margin-bottom: 15px;
+
+    p {
+        width: 100px;
+        text-align: left;
+        color: variables.$colorPrimario;
+        font-size: 24px;
+    }
+
+    input {
+        flex: 1;
+        min-width: 120px;
+    }
 }
 
-.calendar__nav-btn{
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px;
-}
-
-/* Contenedor del título */
-.calendar__title-container{
-    display: flex;
-    justify-content: center;
-}
-
-.calendarioTitulo{
-    margin: 0;
-    font-weight: bold;
-    font-size: 20px;
-    color: #333;
-}
-
-/* Grid de días */
-.calendarioGrid{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
-    margin-top: 10px;
-}
-
-/* Nombres de días */
-.calendarNombreDia{
-    font-weight: bold;
-    font-size: 14px;
-    padding-bottom: 5px;
-    text-align: center;
-    color: #444;
-}
-
-/* Celdas clicables */
-.calendar__day{
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 6px;
-    background: #fafafa;
-    transition: background 0.2s ease;
-}
-
-.calendar__day:hover{
-    background: #e0e0e0;
-}
-
-/* Celdas vacías */
-.calendar__empty{
-    height: 40px;
-}
-
-.datoHistorial{
-    display: flex;
-    flex-direction: column; /* Cada <p> uno encima del otro */
-    align-items: center;    /* Centra todo horizontalmente */
-    gap: 40px;
-}
-
-.datoHistorial p{
+// --- DASHBOARD & BANDA COMÚN ---
+.banda {
+    width: 100vw;
+    height: 180px;
+    background-color: #e8e5dd;
     display: flex;
     align-items: center;
-    gap: 8px;               /* Espacio entre texto e imagen */
-    font-size: 22px;
-    margin: 0;
+    justify-content: space-between;
+    padding: 0 50px; // Añadido padding para evitar pegarse a los bordes en pantallas medias
+}
+
+.bandaIzquierda { padding-left: 20px; } // Ajustado para ser más flexible que 300px
+.bandaDerecha {
+    display: flex;
+    gap: 15px;
+    padding-right: 20px;
+    align-items: center;
+}
+
+.bandaIcono { width: 180px; transition: 0.3s; &:hover { opacity: 0.8; } }
+.bandaTexto {
+    font-size: 28px;
     color: variables.$colorPrimario;
+    font-weight: bold;
 }
 
-.datoHistorial img{
-    width: 40px;
-    height: 40px;
-    margin: 0;
+.bandaMenu {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s;
+    &:hover { background: rgba(0,0,0,0.05); }
 }
 
-//Perfil
-.tresColumnas{
+// --- CONTENIDO DASHBOARD ---
+.informacion {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 100px;
-    max-width: 1200px;
-    margin: 4px auto;
-    align-items: center;
-
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 40px 80px;
+    max-width: 900px;
+    margin: 40px auto;
 }
 
-.columna{
+.mapa img { 
+    width: 100%; 
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.datos {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    align-self: center;
 }
 
-.columnaIzquierda img{
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+.datoFila {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    
+    p { 
+        color: variables.$colorPrimario; 
+        font-size: 20px; 
+        font-weight: bold;
+    }
+    img { width: 45px; height: 45px; }
 }
 
-.columnaCentral p{
+.logros, .historial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+
+    img { width: 100%; max-width: 350px; }
+    &:hover { transform: scale(1.08); }
+}
+
+// --- MENÚ DESPLEGABLE ---
+.menu { position: relative; }
+.desplegable {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: variables.$colorPrimario;
+    list-style: none;
+    padding: 10px 0;
+    width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+
+    li {
+        padding: 12px 25px;
+        cursor: pointer;
+        transition: 0.2s;
+        
+        a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 18px;
+            display: block;
+            width: 100%;
+        }
+        &:hover { background-color: variables.$colorSecundario; }
+    }
+}
+
+// --- CALENDARIO (HISTORIAL) ---
+.calendario {
+    width: 380px; // Un pelín más ancho para respirar
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.calendarioHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar__nav-btn {
+    background: variables.$colorSecundario;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover { transform: scale(1.1); background: variables.$colorPrimario; color: white; }
+}
+
+.calendarioTitulo {
+    font-weight: 800;
+    font-size: 22px;
     color: variables.$colorPrimario;
+    text-transform: capitalize;
+}
+
+.calendarioGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendarNombreDia {
     font-weight: bold;
-    padding: 4px;
-    text-align: center;
+    font-size: 13px;
+    color: #999;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.calendar__day {
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background: transparent;
+    transition: 0.3s;
+    position: relative;
+    font-weight: 500;
+
+    &:hover:not(.disabled) {
+        background: variables.$colorSecundario;
+        color: variables.$colorPrimario;
+    }
+
+    &.has-data {
+        background-color: rgba(variables.$colorPrimario, 0.1);
+        border: 2px solid variables.$colorPrimario;
+        color: variables.$colorPrimario;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            width: 4px;
+            height: 4px;
+            background-color: variables.$colorPrimario;
+            border-radius: 50%;
+        }
+    }
+
+    &.selected {
+        background-color: variables.$colorPrimario !important;
+        color: white !important;
+        transform: scale(1.15);
+        box-shadow: 0 4px 10px rgba(variables.$colorPrimario, 0.3);
+        &::after { background-color: white; }
+    }
+
+    &.disabled {
+        color: #eee;
+        cursor: not-allowed;
+    }
+}
+
+.datoHistorial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #fdfdfd;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+
+    p {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        font-size: 20px;
+        color: variables.$colorPrimario;
+        font-weight: 600;
+
+        span {
+            margin-left: auto;
+            margin-right: 15px;
+            color: #333;
+            font-size: 22px;
+        }
+    }
+    img { width: 35px; height: 35px; }
+}
+
+// --- PERFIL ---
+.tresColumnas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.columnaIzquierda img { 
+    width: 100%; 
+    border-radius: 20px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.columnaCentral {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    
+    p {
+        color: variables.$colorPrimario;
+        font-weight: bold;
+        text-align: left;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    input {
+        width: 100%;
+        text-align: left;
+        border: none;
+        border-bottom: 2px solid #eee;
+        background: transparent;
+        padding: 10px 5px;
+        font-size: 18px;
+        color: #333;
+        
+        &:focus { 
+            outline: none; 
+            border-bottom: 2px solid variables.$colorPrimario; 
+            background: rgba(variables.$colorPrimario, 0.02);
+        }
+    }
 }
 
 .columnaDerecha {
     display: flex;
     flex-direction: column;
-    text-align: justify;
-    margin-top: 80px;
+    justify-content: center;
+    p { 
+        color: #666; 
+        padding: 10px; 
+        line-height: 1.6;
+        font-style: italic;
+    }
 }
 
-.columnaDerecha p{
-    color: variables.$colorPrimario;
-    padding: 8px;
-}
-
-.columnaBoton{
-    margin-top: 20px;
-    max-width: 120px;
-    padding: 12px 20px;
+.columnaBoton {
+    margin-top: 30px;
+    padding: 15px 40px;
     border: none;
     background-color: variables.$colorPrimario;
     color: white;
     font-size: 18px;
-    border-radius: 12px;
+    font-weight: bold;
+    border-radius: 30px;
     cursor: pointer;
-}
+    transition: 0.3s;
 
-.columnaBoton:hover{
-    background-color: variables.$colorSecundario;
+    &:hover { 
+        background-color: variables.$colorSecundario; 
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 }

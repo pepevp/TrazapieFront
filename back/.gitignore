@@ -1,0 +1,30 @@
+# Dependencias
+node_modules/
+jspm_packages/
+
+# Variables de entorno (¡MUY IMPORTANTE! No subas tu MONGO_URI)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# SASS / CSS (Opcional)
+# Si quieres que otros compilen el SASS, ignora el CSS generado. 
+# Si quieres que el CSS esté disponible directamente, borra la línea de abajo.
+.sass-cache/
+*.css.map
+
+# Otros
+dist/
+build/
+.vscode/

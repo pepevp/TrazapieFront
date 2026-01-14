@@ -2,24 +2,28 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Trazapie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Trazapié</title>
     <link rel="stylesheet" href="estilos/main.css">
 </head>
 <body>
     <main>
         <div class="login">
-            <img src="/TrazapieFront/img/logoTrazapie.png" class="logo" alt="logo">
+            <img src="img/logoTrazapie3.png" alt="logo"> 
+            
             <h2>Cuenta de Ingreso</h2>
-            <input class="box" type="email" placeholder="Correo electrónico">
-            <input class="box" type="password" placeholder="Contraseña">
+            
+            <input id="emailLogin" class="box" type="email" placeholder="Correo electrónico" required>
+            <input id="passLogin" class="box" type="password" placeholder="Contraseña" required>
+            
             <button id="confirmar" class="boton" type="button">Acceso</button>
-            <div id="loginError" class="login-error" style="color: red; margin-top: 10px;"></div>
+            
+            <div id="loginError" class="login-error" style="color: #ff4d4d; margin-top: 10px; font-weight: bold;"></div>
+            
             <a href="registro.html" class="registrate link-registro">¿No tienes una cuenta? Regístrate</a>
         </div>
     </main>
 
-    <footer>
-        <script src="/TrazapieFront/scripts/login.js"></script>
-    </footer>
+    <script src="scripts/login.js"></script>
 </body>
 </html>

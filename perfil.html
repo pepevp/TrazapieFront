@@ -1,62 +1,55 @@
-<html>
-    <!DOCTYPE html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/TrazapieFront/estilos/main.css">
-    </head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trazapié - Mi Perfil</title>
+    <link rel="stylesheet" href="estilos/main.css">
+</head>
 
-    <body>
-        <main>
-            <header class="banda">
-                <div class="bandaIzquierda">
-                    <a href="/TrazapieFront/dashboard.html">
-                        <img src="/TrazapieFront/img/logoTrazapie3.png" alt="icono" class="bandaIcono">
-                    </a>
-                </div>
-                    <div class="bandaDerecha">
-                    <p class="bandaTexto" id="nombreUsuario">--</p>
-                    <div class="menu">
-                        <img src="/TrazapieFront/img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
-                        <ul class="desplegable" id="menuDesplegable">
-                            <li>
-                                <a href="/TrazapieFront/dashboard.html">Página de inicio</a>
-                            </li>
-                            <li>
-                                <a href="/TrazapieFront/Perfil.html">Perfil</a>
-                            </li>
-                            <li>
-                                <a href="/TrazapieFront/login.html">Cerrar sesión</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
-
-            <div class="tresColumnas">
-                <div class="columna columnaIzquierda">
-                    <img src="/TrazapieFront/img/Foto.png" alt="Imagen descriptiva">
-                </div>
-
-                <div class="columnaCentral">
-                    
-                </div>
-
-                <div class="columnaDerecha">
-                    <p>Nombre: <span id="nombrePerfil">--</span></p>
-                    <p>Correo: <span id="correoPerfil">--</span></p>
-                    <p>Edad: <span id="edadPerfil">--</span> años</p>
-                    <p>Peso: <span id="pesoPerfil">--</span> kilos</p>
-                    <p>Altura: <span id="alturaPerfil">--</span> cm</p>
-                    <p>Objetivo: <span id="objetivoPerfil">--</span></p>
-
-                    <button class="columnaBoton">Guardar</button>
+<body>
+    <main>
+        <header class="banda">
+            <div class="bandaIzquierda">
+                <a href="dashboard.html">
+                    <img src="img/logoTrazapie3.png" alt="icono" class="bandaIcono">
+                </a>
+            </div>
+            <div class="bandaDerecha">
+                <p class="bandaTexto" id="nombreUsuario">--</p>
+                <div class="menu">
+                    <img src="img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
+                    <ul class="desplegable" id="menuDesplegable">
+                        <li><a href="dashboard.html">Página de inicio</a></li>
+                        <li><a href="perfil.html">Perfil</a></li>
+                        <li><a href="login.html" id="logout">Cerrar sesión</a></li>
+                    </ul>
                 </div>
             </div>
+        </header>
 
+        <div class="tresColumnas">
+            <div class="columna columnaIzquierda">
+                <img src="img/Foto.png" alt="Foto de perfil">
+            </div>
 
-            
-    <footer>
-        <script src="/TrazapieFront/scripts/utilidades.js"></script>
-        <script src="/TrazapieFront/scripts/perfil.js"></script>
-    </footer>
+            <div class="columnaCentral">
+                </div>
+
+            <div class="columnaDerecha">
+                <p>Nombre: <input type="text" id="nombrePerfil" class="input-perfil"></p>
+                <p>Apellidos: <input type="text" id="apellidosPerfil" class="input-perfil"></p>
+                <p>Correo: <input type="email" id="correoPerfil" class="input-perfil" readonly></p> 
+                <p>Edad: <input type="number" id="edadPerfil" class="input-perfil"> años</p>
+                <p>Peso: <input type="number" id="pesoPerfil" class="input-perfil"> kilos</p>
+                <p>Altura: <input type="number" id="alturaPerfil" class="input-perfil"> cm</p>
+                <p>Objetivo diario: <input type="number" id="objetivoPerfil" class="input-perfil"> pasos</p>
+                <button class="columnaBoton" id="btnGuardar">Guardar Cambios</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/utilidades.js"></script>
+    <script src="scripts/perfil.js"></script>
+</body>
 </html>

@@ -1,39 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    const userId = localStorage.getItem("usuarioId");
 
-    const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
-
-    if (!usuarioActual) {
-        console.error("No hay usuario logueado");
-        // Opcional: redirigir al login
-        // window.location.href = "/TrazapieFront/login.html";
+    // Verificación de seguridad corregida para localhost:3000
+    if (!userId) {
+        window.location.href = "login.html";
         return;
     }
 
-    // Elementos donde pintar los datos
+    const nombreElem = document.getElementById("nombreUsuario");
     const pasosElem = document.getElementById("pasosAct");
     const caloriasElem = document.getElementById("caloriasAct");
     const tiempoElem = document.getElementById("tiempoAct");
 
-    // Fecha de hoy
-    const fecha = new Date();
-    const year = fecha.getFullYear();
-    const month = String(fecha.getMonth() + 1).padStart(2, "0"); // "11"
-    const day = String(fecha.getDate()); // "24"
+    try {
+        // RUTA RELATIVA
+        const response = await fetch(`/api/usuario/${userId}`);
+        if (!response.ok) throw new Error("Error al obtener datos");
 
-    const claveMes = `${year}-${month}`; // "2025-11"
+        const usuario = await response.json();
 
-    // Comprobamos si existe historial del mes y del día
-    const mesHistorial = usuarioActual.historial[claveMes];
-    const datosDia = mesHistorial ? mesHistorial[day] : null;
+        if (nombreElem) nombreElem.textContent = usuario.datos_personales.nombre;
 
-    if (datosDia) {
-        pasosElem.innerText = `Pasos: ${datosDia.pasos}`;
-        caloriasElem.innerText = `Calorías: ${datosDia.calorias}`;
-        tiempoElem.innerText = `Tiempo de actividad: ${datosDia.tiempo} min.`;
-    } else {
-        pasosElem.innerText = `Pasos: 0`;
-        caloriasElem.innerText = `Calorías: 0`;
-        tiempoElem.innerText = `Tiempo de actividad: 0 min.`;
+        const pasos = usuario.actividad_resumen.pasosTotales || 0;
+        const calorias = (pasos * 0.04).toFixed(0);
+        const tiempo = (pasos / 100).toFixed(0);
+
+        if (pasosElem) pasosElem.innerText = `Pasos: ${pasos}`;
+        if (caloriasElem) caloriasElem.innerText = `Calorías: ${calorias}`;
+        if (tiempoElem) tiempoElem.innerText = `Tiempo: ${tiempo} min`;
+
+    } catch (error) {
+        console.error("Error cargando dashboard:", error);
     }
-
 });

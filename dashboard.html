@@ -1,76 +1,71 @@
-<html>
-    <!DOCTYPE html>
-    <head>
-        <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trazapié - Dashboard</title>
 
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-        <link rel="stylesheet" href="/TrazapieFront/estilos/main.css">
-    </head>
+    <link rel="stylesheet" href="estilos/main.css">
+</head>
 
-    <body>
-        <main>
-            <header class="banda">
-                <div class="bandaIzquierda">
-                    <a href="/TrazapieFront/dashboard.html">
-                        <img src="/TrazapieFront/img/logoTrazapie3.png" alt="icono" class="bandaIcono">
-                    </a>
-                </div>
-                <div class="bandaDerecha">
-                    <p class="bandaTexto" id="nombreUsuario">--</p>
-                    <div class="menu">
-                        <img src="/TrazapieFront/img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
-                        <ul class="desplegable" id="menuDesplegable">
-                            <li>
-                                <a href="dashboard.html">Página de inicio</a>
-                            </li>
-                            <li>
-                                <a href="Perfil.html">Perfil</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Cerrar sesión</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
-
-            <div class="informacion">
-                <div class="mapa" id="mapa" style="height: 300px;"></div>
-
-                <div class="datos">
-                    <div class="datoFila">
-                        <p id="pasosAct">Pasos: --</p>
-                        <img src="/TrazapieFront/img/pies.png" alt="Pasos">
-                    </div>
-                    <div class="datoFila">
-                        <p id="caloriasAct">Calorías: --</p>
-                        <img src="/TrazapieFront/img/corazon.png" alt="Calorías">
-                    </div>
-                    <div class="datoFila">
-                        <p id="tiempoAct">Tiempo de actividad: --</p>
-                        <img src="/TrazapieFront/img/reloj.png" alt="Tiempo">
-                    </div>
-                </div>
-
-                <div class="logros">
-                    <a href="logros.html">
-                        <img src="/TrazapieFront/img/logros.png">
-                    </a>
-                </div>
-
-                <div class="historial">
-                    <a href="/TrazapieFront/historial.html">
-                        <img src="/TrazapieFront/img/historial.png">
-                    </a>
+<body>
+    <main>
+        <header class="banda">
+            <div class="bandaIzquierda">
+                <a href="dashboard.html">
+                    <img src="img/logoTrazapie3.png" alt="icono" class="bandaIcono">
+                </a>
+            </div>
+            <div class="bandaDerecha">
+                <p class="bandaTexto" id="nombreUsuario">--</p>
+                <div class="menu">
+                    <img src="img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
+                    <ul class="desplegable" id="menuDesplegable">
+                        <li><a href="dashboard.html">Página de inicio</a></li>
+                        <li><a href="perfil.html">Perfil</a></li>
+                        <li><a href="login.html" id="logout">Cerrar sesión</a></li>
+                    </ul>
                 </div>
             </div>
-        </main>
-    </body>
-    <footer>
-        <script src="/TrazapieFront/scripts/utilidades.js"></script>
-        <script src="/TrazapieFront/scripts/dashboard.js"></script>
-        <script src="/TrazapieFront/scripts/mapa.js"></script>
-    </footer>
+        </header>
+
+        <div class="informacion">
+            <div class="mapa" id="mapa" style="height: 300px;"></div>
+
+            <div class="datos">
+                <div class="datoFila">
+                    <p id="pasosAct">Pasos: --</p>
+                    <img src="img/pies.png" alt="Pasos">
+                </div>
+                <div class="datoFila">
+                    <p id="caloriasAct">Calorías: --</p>
+                    <img src="img/corazon.png" alt="Calorías">
+                </div>
+                <div class="datoFila">
+                    <p id="tiempoAct">Tiempo de actividad: --</p>
+                    <img src="img/reloj.png" alt="Tiempo">
+                </div>
+            </div>
+
+            <div class="logros">
+                <a href="logros.html">
+                    <img src="img/logros.png" alt="Logros">
+                </a>
+            </div>
+
+            <div class="historial">
+                <a href="historial.html">
+                    <img src="img/historial.png" alt="Historial">
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/utilidades.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/mapa.js"></script>
+</body>
 </html>
