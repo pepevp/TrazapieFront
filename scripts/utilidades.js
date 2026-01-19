@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if(toggleBtn && menu){
         toggleBtn.addEventListener('click', (e) => {
             e.stopPropagation(); 
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            // Bloque C: Menu transition
+            // menu.style.display = (menu.style.display === "block") ? "none" : "block";
+            menu.classList.toggle("activo");
         });
     }
 

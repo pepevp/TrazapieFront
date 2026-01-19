@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Trazapié</title>
     <link rel="stylesheet" href="estilos/main.css">
 </head>
+
 <body>
     <main>
+        <!-- Video de fondo (Bloque A) -->
+        <div class="video-container">
+            <video autoplay muted loop id="bgVideo" poster="img/logoTrazapie3.png">
+                <source src="img/andando.mp4" type="video/mp4">
+                Tu navegador no soporta video HTML5.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Controls moved outside ensuring they are clickable (z-index > 0) -->
+        <div class="video-controls">
+            <button id="videoBtn" class="video-btn">❚❚</button>
+        </div>
+
         <div class="login">
-            <img src="img/logoTrazapie3.png" alt="logo"> 
-            
+            <img src="img/logoTrazapie3.png" alt="logo" class="logo-img">
+
             <h2>Cuenta de Ingreso</h2>
-            
+
             <input id="emailLogin" class="box" type="email" placeholder="Correo electrónico" required>
             <input id="passLogin" class="box" type="password" placeholder="Contraseña" required>
-            
+
             <button id="confirmar" class="boton" type="button">Acceso</button>
-            
+
             <div id="loginError" class="login-error" style="color: #ff4d4d; margin-top: 10px; font-weight: bold;"></div>
-            
+
             <a href="registro.html" class="registrate link-registro">¿No tienes una cuenta? Regístrate</a>
         </div>
     </main>
 
     <script src="scripts/login.js"></script>
 </body>
+
 </html>

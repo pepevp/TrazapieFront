@@ -10,9 +10,19 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../')));
 
-mongoose.connect(process.env.MONGO_URI)
+const options = {
+    serverSelectionTimeoutMS: 5000,
+    socketTimeoutMS: 45000,
+    family: 4 // Use IPv4, skip trying IPv6
+};
+
+mongoose.connect(process.env.MONGO_URI, options)
     .then(() => console.log('✅ Conectado a MongoDB Atlas: TrazapieDB'))
     .catch(err => console.error('❌ Error de conexión:', err));
+
+mongoose.connection.on('error', err => console.error('🔥 Mongoose error:', err));
+mongoose.connection.on('disconnected', () => console.log('⚠️ Mongoose desconectado'));
+mongoose.connection.on('reconnected', () => console.log('🔄 Mongoose reconectado'));
 
 // ESQUEMA ACTUALIZADO CON HISTORIAL
 const userSchema = new mongoose.Schema({
