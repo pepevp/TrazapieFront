@@ -677,7 +677,7 @@ fila .desplegable li:active,
   /* Cada <p> uno encima del otro */
   align-items: center;
   /* Centra todo horizontalmente */
-  gap: 40px;
+  gap: 10px;
 }
 
 .datoHistorial p {
