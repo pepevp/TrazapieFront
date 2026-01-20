@@ -148,14 +148,16 @@ h2 {
   font-family: "Inter", sans-serif;
 }
 
+/* --- AQUÍ ESTÁ LA MODIFICACIÓN --- */
 input {
-  background-color: #A17C6B;
+  background-color: transparent; /* Fondo transparente */
   color: #000000;
   padding: 14px 12px;
-  border: none;
+  border: 2px solid #A17C6B;     /* Borde del color marrón */
   font-size: 20px;
   border-radius: 15px;
 }
+/* -------------------------------- */
 
 input::-moz-placeholder {
   color: #313131;
