@@ -750,6 +750,7 @@ fila .desplegable li:active,
   display: flex;
   flex-direction: column;
   margin-top: 80px;
+  
 }
 
 .columnaDerecha p {
@@ -758,6 +759,7 @@ fila .desplegable li:active,
 }
 
 .columnaBoton {
+  text-align: center;
   margin-top: 20px;
   max-width: 120px;
   padding: 12px 20px;
@@ -767,6 +769,7 @@ fila .desplegable li:active,
   font-size: 18px;
   border-radius: 12px;
   cursor: pointer;
+  align-self: center;
 }
 
 .columnaBoton:hover {
