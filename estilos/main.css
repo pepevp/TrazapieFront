@@ -245,10 +245,39 @@ input::placeholder {
   padding-left: 300px;
 }
 
+/* Logo SVG en el header */
 .bandaIcono {
-  width: auto;
-  max-height: 140px;
-  padding-left: 40px;
+  height: 140px;         /* Mantiene la altura */
+  width: auto;           /* Mantiene proporción */
+  padding-left: 40px;    /* Igual que antes */
+  transition: transform 0.3s ease; /* Para animación hover */
+  cursor: pointer;
+}
+
+/* Interacción al pasar el mouse */
+.bandaIcono:hover {
+  transform: scale(1.1);  /* Pequeño zoom al pasar el mouse */
+}
+
+/* Cambiar color del SVG si los paths usan fill="currentColor" */
+.bandaIcono path {
+  fill: #3C887E;           /* Color principal del logo */
+  transition: fill 0.3s ease;
+}
+
+.bandaIcono:hover path {
+  fill: #E63946;           /* Color al hover */
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .bandaIzquierda {
+    padding-left: 20px;    /* Ajusta espacio del logo */
+  }
+
+  .bandaIcono {
+    height: 100px;         /* Reduce altura en móviles */
+  }
 }
 
 .bandaTexto {
