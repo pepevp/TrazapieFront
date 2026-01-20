@@ -749,7 +749,6 @@ fila .desplegable li:active,
 .columnaDerecha {
   display: flex;
   flex-direction: column;
-  text-align: justify;
   margin-top: 80px;
 }
 
