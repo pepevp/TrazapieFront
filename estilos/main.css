@@ -723,4 +723,8 @@ fila .desplegable li:active,
   background-color: #A17C6B;
 }
 
+.logro img{
+  border-radius: 30px;
+}
+
 /*# sourceMappingURL=main.css.map */
