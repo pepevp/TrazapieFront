@@ -11,29 +11,29 @@ document.addEventListener("DOMContentLoaded", () => {
         altura: document.getElementById("regAltura")
     };
 
-    // Micro-interaction: Validation on Blu
+    // Validaciones visuales (blur)
     Object.values(inputs).forEach(input => {
         if(!input) return;
         input.addEventListener("blur", () => {
             if(input.value.trim() !== "") {
-                input.style.border = "2px solid #3C887E"; // Green/Brand color
+                input.style.border = "2px solid #3C887E"; // Verde marca
                 input.style.transition = "border 0.3s ease";
             } else {
-                input.style.border = "2px solid #e63946"; // Red
+                input.style.border = "2px solid #e63946"; // Rojo
                 shakeElement(input);
             }
         });
     });
 
     btnRegistro.addEventListener("click", async () => {
-        // Reset styles and msg
+        // Resetear estilos y mensajes
         msgDiv.innerText = "";
         msgDiv.style.color = "black";
         
         let valid = true;
         const data = {};
 
-        // Validate all
+        // Validar que todo esté lleno
         for (const [key, input] of Object.entries(inputs)) {
             if (!input || input.value.trim() === "") {
                 input.style.border = "2px solid #e63946";
@@ -50,34 +50,49 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Loading State
+        // Estado de carga
         btnRegistro.classList.add("loading");
-        btnRegistro.textContent = "";
+        btnRegistro.textContent = "Registrando...";
 
-        // API Call (Mocked or Real)
-        // Note: The backend route /api/registro is NOT implemented yet in the user's plan but we are in "Frontend Features" task.
-        // We will simulate success or call login for now if we want to test flow, but let's assume we just want the UI interaction.
-        // Wait, the user asked for these frontend features. The backend implementation IS needed for real registration.
-        // I will implement the fetch call assuming the route EXISTs or will exist.
-        
         try {
-            // Simulate network delay for effect
-            await new Promise(r => setTimeout(r, 1500)); 
-            
-            // For now, fail gracefully if backend not ready, or show success.
-            // Let's just show Success for the UI Demo
-            msgDiv.innerText = "¡Registro completado! Redirigiendo...";
-            msgDiv.style.color = "#3C887E";
-            
-            setTimeout(() => {
-                window.location.href = "login.html";
-            }, 1000);
+            // --- CONEXIÓN REAL CON EL BACKEND ---
+            const respuesta = await fetch('/api/registro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const resultado = await respuesta.json();
+
+            if (resultado.success) {
+                // ÉXITO
+                msgDiv.innerText = "¡Registro completado! Redirigiendo...";
+                msgDiv.style.color = "#3C887E";
+                
+                // Esperar un poco para que el usuario lea el mensaje
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1500);
+
+            } else {
+                // ERROR (ej: email repetido)
+                msgDiv.innerText = resultado.message || "Error al registrar.";
+                msgDiv.style.color = "#e63946";
+                shakeElement(btnRegistro);
+            }
 
         } catch (e) {
-            msgDiv.innerText = "Error en el registro.";
+            console.error(e);
+            msgDiv.innerText = "Error de conexión con el servidor.";
+            msgDiv.style.color = "#e63946";
         } finally {
             btnRegistro.classList.remove("loading");
-            btnRegistro.textContent = "Confirmar Registro";
+            if(btnRegistro.textContent !== "Registrando...") {
+                 // Si no redirigimos, volver el texto a la normalidad
+                 btnRegistro.textContent = "Confirmar Registro";
+            }
         }
     });
 
