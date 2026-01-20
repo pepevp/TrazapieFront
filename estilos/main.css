@@ -727,4 +727,11 @@ fila .desplegable li:active,
   border-radius: 30px;
 }
 
+.logros img{
+  border-radius: 30px;
+}
+
+.historial img{
+  border-radius: 30px;
+}
 /*# sourceMappingURL=main.css.map */
