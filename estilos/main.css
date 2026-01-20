@@ -9,23 +9,9 @@
 }
 
 body {
-  /* 1. ACCESIBILIDAD VISUAL:
-     Usamos un color "blanco roto" (Off-White) en lugar de blanco puro.
-     Esto reduce la fatiga visual (eye strain) y da calidez a la app. */
   background-color: #FAF9F6;
-
-  /* 2. DISEÑO EMOCIONAL:
-     Patrón "Arcos de Sendero". Evoca colinas y movimiento suave.
-     Está configurado con tu verde corporativo (#3C887E) pero
-     al 5% de opacidad para no dificultar la lectura (Ratio de contraste seguro). */
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233C887E' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-
-  /* Asegura que cubra toda la pantalla */
   min-height: 100vh;
-  
-  /* 3. ACCESIBILIDAD COGNITIVA:
-     Al dejar el fondo fijo, evitamos el efecto de "mareo" o parpadeo
-     cuando el usuario hace scroll rápido. */
   background-attachment: fixed;
 }
 
@@ -35,6 +21,7 @@ main {
   align-items: center;
 }
 
+/* --- ESTILOS LOGIN Y VIDEO --- */
 .login {
   display: flex;
   flex-direction: column;
@@ -44,10 +31,8 @@ main {
   text-align: center;
   gap: 20px;
   position: relative;
-  /* Ensure it sits above video */
   z-index: 10;
   background: rgba(255, 255, 255, 0.85);
-  /* Glassmorphism background */
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -55,11 +40,9 @@ main {
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   margin-top: 10vh;
-  /* Center vertically */
   margin-bottom: 10vh;
 }
 
-/* Video Background Styles */
 .video-container {
   position: fixed;
   top: 0;
@@ -72,7 +55,6 @@ main {
 
 video#bgVideo {
   min-width: 120%;
-  /* Sized up to allow panning */
   min-height: 100%;
   width: auto;
   height: auto;
@@ -85,16 +67,8 @@ video#bgVideo {
 }
 
 @keyframes panVideo {
-  0% {
-    transform: translate(-60%, -50%);
-  }
-
-  /* Start slightly left */
-  100% {
-    transform: translate(-40%, -50%);
-  }
-
-  /* Move slightly right */
+  0% { transform: translate(-60%, -50%); }
+  100% { transform: translate(-40%, -50%); }
 }
 
 .video-overlay {
@@ -104,7 +78,6 @@ video#bgVideo {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  /* Dark overlay for readability */
   z-index: 1;
 }
 
@@ -148,24 +121,24 @@ h2 {
   font-family: "Inter", sans-serif;
 }
 
-/* --- AQUÍ ESTÁ LA MODIFICACIÓN --- */
+/* --- INPUTS Y BOTONES --- */
 input {
-  background-color: transparent; /* Fondo transparente */
+  background-color: transparent;
   color: #000000;
   padding: 14px 12px;
-  border: 2px solid #A17C6B;     /* Borde del color marrón */
+  border: 2px solid #A17C6B;
   font-size: 20px;
   border-radius: 15px;
-}
-/* -------------------------------- */
-
-input::-moz-placeholder {
-  color: #313131;
+  transition: all 0.3s ease;
 }
 
-input::placeholder {
-  color: #313131;
+input:focus {
+  background-color: rgba(161, 124, 107, 0.05);
+  outline: none;
 }
+
+input::-moz-placeholder { color: #313131; }
+input::placeholder { color: #313131; }
 
 .boton {
   padding: 14px 12px;
@@ -177,6 +150,8 @@ input::placeholder {
   border: none;
   margin: 0 auto;
   margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .boton:hover {
@@ -184,7 +159,6 @@ input::placeholder {
   font-weight: bold;
 }
 
-/* Loading Spinner (Bloque C) */
 .boton.loading {
   background-color: #6c757d;
   cursor: not-allowed;
@@ -205,13 +179,8 @@ input::placeholder {
 }
 
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .registrate {
@@ -249,6 +218,7 @@ input::placeholder {
   min-width: 120px;
 }
 
+/* --- HEADER (BANDA SUPERIOR) --- */
 .banda {
   width: 100vw;
   height: 180px;
@@ -269,39 +239,26 @@ input::placeholder {
   padding-left: 300px;
 }
 
-/* Logo SVG en el header */
 .bandaIcono {
-  height: 140px;         /* Mantiene la altura */
-  width: auto;           /* Mantiene proporción */
-  padding-left: 40px;    /* Igual que antes */
-  transition: transform 0.3s ease; /* Para animación hover */
+  height: 140px;
+  width: auto;
+  padding-left: 40px;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
-/* Interacción al pasar el mouse */
-.bandaIcono:hover {
-  transform: scale(1.1);  /* Pequeño zoom al pasar el mouse */
-}
+.bandaIcono:hover { transform: scale(1.1); }
 
-/* Cambiar color del SVG si los paths usan fill="currentColor" */
 .bandaIcono path {
-  fill: #3C887E;           /* Color principal del logo */
+  fill: #3C887E;
   transition: fill 0.3s ease;
 }
 
-.bandaIcono:hover path {
-  fill: #E63946;           /* Color al hover */
-}
+.bandaIcono:hover path { fill: #E63946; }
 
-/* Responsive para móviles */
 @media (max-width: 768px) {
-  .bandaIzquierda {
-    padding-left: 20px;    /* Ajusta espacio del logo */
-  }
-
-  .bandaIcono {
-    height: 100px;         /* Reduce altura en móviles */
-  }
+  .bandaIzquierda { padding-left: 20px; }
+  .bandaIcono { height: 100px; }
 }
 
 .bandaTexto {
@@ -319,6 +276,7 @@ input::placeholder {
   cursor: pointer;
 }
 
+/* --- DASHBOARD ELEMENTS --- */
 .informacion {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -336,9 +294,7 @@ input::placeholder {
   grid-row: 1/2;
 }
 
-.mapa img {
-  width: 100%;
-}
+.mapa img { width: 100%; }
 
 .datos {
   grid-column: 2/3;
@@ -362,10 +318,7 @@ input::placeholder {
   font-size: 18px;
 }
 
-.datoFila img {
-  display: none;
-  /* Hide old images if present */
-}
+.datoFila img { display: none; }
 
 .svg-icon {
   width: 45px;
@@ -374,38 +327,20 @@ input::placeholder {
   transition: all 0.3s ease;
 }
 
-/* SVG Animations (Bloque B) */
-
-/* 1. Heartbeat */
+/* SVG Animations */
 .svg-heart:hover {
   color: #E63946;
-  /* Red on hover */
   animation: heartbeat 1s infinite;
 }
 
 @keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-
-  15% {
-    transform: scale(1.3);
-  }
-
-  30% {
-    transform: scale(1);
-  }
-
-  45% {
-    transform: scale(1.15);
-  }
-
-  60% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  15% { transform: scale(1.3); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
 }
 
-/* 2. Clock Hands */
 .svg-clock:hover .minute-hand {
   transform-origin: center;
   animation: spin 2s linear infinite;
@@ -416,39 +351,18 @@ input::placeholder {
   animation: spin 12s linear infinite;
 }
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
+@keyframes spin { 100% { transform: rotate(360deg); } }
 
-/* 3. Steps Walking Effect */
-.svg-steps:hover .foot-left {
-  animation: walk 1s ease-in-out infinite;
-}
-
-.svg-steps:hover .foot-right {
-  animation: walk 1s ease-in-out infinite 0.5s;
-  /* Delay for alternating step */
-}
+.svg-steps:hover .foot-left { animation: walk 1s ease-in-out infinite; }
+.svg-steps:hover .foot-right { animation: walk 1s ease-in-out infinite 0.5s; }
 
 @keyframes walk {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateY(-3px);
-    opacity: 0.6;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-3px); opacity: 0.6; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
+/* Enlaces del Dashboard (No borrar) */
 .logros {
   grid-column: 1/2;
   grid-row: 2/3;
@@ -456,10 +370,6 @@ input::placeholder {
   margin-top: 60px;
   justify-content: center;
   align-items: center;
-}
-
-.logros img {
-  width: 400px;
 }
 
 .historial {
@@ -471,22 +381,30 @@ input::placeholder {
   align-items: center;
 }
 
+.logros img,
 .historial img {
   width: 400px;
+  border-radius: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
 }
 
-.menu {
-  position: relative;
+.logros img:hover,
+.historial img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(60, 136, 126, 0.25);
+  filter: brightness(1.05);
 }
+
+/* --- MENÚ DESPLEGABLE --- */
+.menu { position: relative; }
 
 .desplegable {
   display: block;
-  /* Always block but hidden by opacity/visibility for transition */
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-
   position: absolute;
   top: 100%;
   right: 0;
@@ -502,7 +420,6 @@ input::placeholder {
   padding: 10px 20px;
   cursor: pointer;
   color: #000000;
-  color: #000000;
   font-size: 22px;
 }
 
@@ -514,110 +431,154 @@ input::placeholder {
 .desplegable li a {
   color: #000000;
   text-decoration: none;
-  /* Quita el subrayado */
 }
 
-fila .desplegable li:active,
-.desplegable li.selected {
-  color: var(--colorTextos);
-  /* Mantiene el mismo color */
-  text-decoration: none;
-}
-
-/* Menu Open State */
 .desplegable.activo {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.columnasLogros {
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
-  align-items: center;
-  padding: 80px 20px;
-  max-width: 1800px;
-  margin: 0 auto;
+/* ========================================= */
+/* --- NUEVA SECCIÓN DE LOGROS (GRID SYSTEM) --- */
+/* ========================================= */
+
+.contenedor-logros {
+    width: 100%;
+    max-width: 1400px;
+    padding: 60px 20px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.fila1,
-.fila2 {
-  display: flex;
-  gap: 40px;
-  /* Reduced from 100px for better fit */
-  justify-content: center;
-  width: 100%;
-  flex-wrap: wrap;
-  /* Allow wrapping on small screens */
+.titulo-seccion {
+    color: #3C887E;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
+/* SISTEMA DE REJILLA (GRID) RESPONSIVO */
+.grid-logros {
+    display: grid;
+    /* Esto hace la magia: crea columnas automáticas de mínimo 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    padding: 10px;
+}
 
-  .fila1,
-  .fila2 {
-    gap: 20px;
+/* TARJETA INDIVIDUAL (CARD) */
+.tarjeta-logro {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 30px;
+    display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    gap: 20px;
+    /* Sombra elegante y suave */
+    box-shadow: 0 10px 30px rgba(60, 136, 126, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
 
-  .logro {
+/* Efecto Hover solo en desbloqueados */
+.tarjeta-logro.desbloqueado {
+    cursor: pointer;
+}
+
+.tarjeta-logro.desbloqueado:hover {
+    transform: translateY(-10px); /* Levita hacia arriba */
+    box-shadow: 0 20px 40px rgba(60, 136, 126, 0.25);
+}
+
+/* IMAGEN DEL LOGRO */
+.img-logro {
     width: 100%;
-    max-width: 450px;
-    /* Ensure they are not too wide but consistent */
-    justify-content: flex-start;
-    /* Keep content left-aligned inside the centered box */
-  }
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.logro {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px;
-  gap: 20px;
-  /* Added spacing */
+.img-logro img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Sombra proyectada por la imagen */
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+    transition: transform 0.4s ease;
 }
 
-.logro img {
-  display: block;
-  margin: 0;
-  width: 200px;
-  /* ajusta el tamaño que necesites */
-  height: auto;
+.tarjeta-logro.desbloqueado:hover .img-logro img {
+    transform: scale(1.1) rotate(3deg); /* Zoom y ligera rotación divertida */
 }
 
-/* Removed brightness filter */
-.bloqueado-wrapper {
-  position: relative;
-  display: inline-block;
+/* TEXTOS */
+.info-logro {
+    width: 100%;
 }
 
-.bloqueado-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  /* Adjust size of lock */
-  height: 80px;
-  background-image: url('../img/candado.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  pointer-events: none;
+.info-logro h3 {
+    color: #2b2b2b;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
-.logro p {
-  text-align: left;
-  color: #3C887E;
-  font-size: 18px;
-  font-family: "Inter", sans-serif;
-  line-height: 2;
-  margin: 0;
+.info-logro p {
+    color: #888;
+    font-size: 16px;
+    margin: 0;
 }
 
+.info-logro .dato-destacado {
+    color: #3C887E; /* Verde corporativo */
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* --- ESTILOS PARA LOGROS BLOQUEADOS --- */
+
+.tarjeta-logro.bloqueado {
+    background: #f4f4f4;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.03);
+    border: 1px solid #e0e0e0;
+}
+
+.tarjeta-logro.bloqueado .img-logro img {
+    /* Efecto gris y borroso */
+    filter: grayscale(100%) opacity(0.3) blur(2px); 
+}
+
+.candado-overlay {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0.5;
+    z-index: 10;
+    /* Centrado absoluto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tarjeta-logro.bloqueado h3 {
+    color: #999;
+}
+
+.tarjeta-logro.bloqueado p {
+    color: #aaa;
+    font-style: italic;
+}
+
+
+/* --- CALENDARIO --- */
 .calendario {
   width: 350px;
   background: #ffffff;
@@ -628,7 +589,6 @@ fila .desplegable li:active,
   text-align: center;
 }
 
-/* Header con flechas y título centrado */
 .calendarioHeader {
   display: grid;
   grid-template-columns: 40px 1fr 40px;
@@ -644,7 +604,6 @@ fila .desplegable li:active,
   padding: 5px;
 }
 
-/* Contenedor del título */
 .calendar__title-container {
   display: flex;
   justify-content: center;
@@ -657,7 +616,6 @@ fila .desplegable li:active,
   color: #333;
 }
 
-/* Grid de días */
 .calendarioGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -665,7 +623,6 @@ fila .desplegable li:active,
   margin-top: 10px;
 }
 
-/* Nombres de días */
 .calendarNombreDia {
   font-weight: bold;
   font-size: 14px;
@@ -674,7 +631,6 @@ fila .desplegable li:active,
   color: #444;
 }
 
-/* Celdas clicables */
 .calendar__day {
   height: 40px;
   display: flex;
@@ -686,21 +642,15 @@ fila .desplegable li:active,
   transition: background 0.2s ease;
 }
 
-.calendar__day:hover {
-  background: #e0e0e0;
-}
+.calendar__day:hover { background: #e0e0e0; }
 
-/* Celdas vacías */
-.calendar__empty {
-  height: 40px;
-}
+.calendar__empty { height: 40px; }
 
+/* --- HISTORIAL Y PERFIL --- */
 .datoHistorial {
   display: flex;
   flex-direction: column;
-  /* Cada <p> uno encima del otro */
   align-items: center;
-  /* Centra todo horizontalmente */
   gap: 10px;
 }
 
@@ -708,7 +658,6 @@ fila .desplegable li:active,
   display: flex;
   align-items: center;
   gap: 8px;
-  /* Espacio entre texto e imagen */
   font-size: 22px;
   margin: 0;
   color: #3C887E;
@@ -752,13 +701,9 @@ fila .desplegable li:active,
   display: flex;
   flex-direction: column;
   margin-top: 80px;
-  
 }
 
-.columnaDerecha p {
-  color: #3C887E;
-  padding: 8px;
-}
+.columnaDerecha p { color: #3C887E; padding: 8px; }
 
 .columnaBoton {
   text-align: center;
@@ -774,19 +719,4 @@ fila .desplegable li:active,
   align-self: center;
 }
 
-.columnaBoton:hover {
-  background-color: #A17C6B;
-}
-
-.logro img{
-  border-radius: 30px;
-}
-
-.logros img{
-  border-radius: 30px;
-}
-
-.historial img{
-  border-radius: 30px;
-}
-/*# sourceMappingURL=main.css.map */
+.columnaBoton:hover { background-color: #A17C6B; }
