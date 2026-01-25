@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Mostrar nombre del usuario logueado desde la Base de Datos
+    // 1. Mostrar nombre del usuario
     const nombreElem = document.getElementById("nombreUsuario");
-    
-    // CAMBIO: Ahora buscamos "usuarioNombre" que es lo que guarda tu nuevo login.js
     const nombreGuardado = localStorage.getItem("usuarioNombre");
 
     if (nombreGuardado && nombreElem) {
@@ -12,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nombreElem.innerText = "Invitado";
     }
 
-    // 2. Funcionalidad de botones de navegación
+    // 2. Funcionalidad de botones de navegación (Login)
     const boton = document.getElementById('confirmar');
     if (boton) {
         boton.addEventListener('click', () => {
@@ -27,30 +25,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Menú desplegable (Lógica de UI)
+    // --- BLOQUE DE ACCESIBILIDAD (Menú Desplegable) ---
     const toggleBtn = document.getElementById('menuToggle');
     const menu = document.getElementById('menuDesplegable');
 
     if(toggleBtn && menu){
+        // Función auxiliar para abrir/cerrar
+        const toggleMenu = () => {
+            // Cambiamos la clase visual
+            menu.classList.toggle("activo");
+            
+            // ACCESIBILIDAD: Actualizamos el estado ARIA
+            // Si tiene la clase 'activo', expanded es true. Si no, false.
+            const estaAbierto = menu.classList.contains("activo");
+            toggleBtn.setAttribute("aria-expanded", estaAbierto);
+        };
+
+        // Evento Click (Ratón)
         toggleBtn.addEventListener('click', (e) => {
             e.stopPropagation(); 
-            // Bloque C: Menu transition
-            // menu.style.display = (menu.style.display === "block") ? "none" : "block";
-            menu.classList.toggle("activo");
+            toggleMenu();
+        });
+
+        // ACCESIBILIDAD: Evento Teclado (Enter o Espacio)
+        // Como pusimos role="button" y tabindex="0" en el HTML, necesitamos esto:
+        toggleBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault(); // Evita que la página haga scroll con espacio
+                toggleMenu();
+            }
         });
     }
 
+    // Cerrar menú al hacer clic fuera
     document.addEventListener('click', (e) => {
         if (menu && toggleBtn && !toggleBtn.contains(e.target) && !menu.contains(e.target)) {
-            menu.style.display = 'none';
+            // Si el menú estaba abierto, lo cerramos y actualizamos ARIA
+            if (menu.classList.contains('activo')) {
+                menu.classList.remove('activo');
+                toggleBtn.setAttribute("aria-expanded", "false");
+            }
         }
     });
 
-    // 4. Botón de Cerrar Sesión (Opcional pero recomendado)
-    const btnLogout = document.getElementById('logout'); // Si tienes un ID 'logout' en tu menú
+    // 4. Botón de Cerrar Sesión
+    const btnLogout = document.getElementById('logout');
     if (btnLogout) {
         btnLogout.addEventListener('click', () => {
-            localStorage.clear(); // Borra los datos del usuario
+            localStorage.clear();
             window.location.href = 'login.html';
         });
     }

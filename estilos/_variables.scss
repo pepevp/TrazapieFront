@@ -1,9 +1,11 @@
-$colorPrimario: #3C887E;
-$colorSecundario: #A17C6B;
+// Ajuste de contraste para cumplir WCAG 2.1 Nivel AA (Ratio > 4.5:1)
+// El color original era #3C887E (Ratio 4.3:1). Lo oscurecemos mínimamente:
+$colorPrimario: #357A71; 
+
+// El color original era #A17C6B (Ratio 3.5:1). Necesita ser más oscuro para textos:
+$colorSecundario: #8C6858;
+
 $colorTextos: #000000;
 
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-
 $font: "Inter", sans-serif;
