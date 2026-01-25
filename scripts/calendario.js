@@ -50,19 +50,36 @@ document.addEventListener("DOMContentLoaded", async () => {
             const cell = document.createElement("div");
             cell.classList.add("calendar__day");
             cell.textContent = day;
+            cell.setAttribute("role", "button");
+            cell.setAttribute("tabindex", "0");
 
             const fechaBusqueda = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
             const tieneDatos = datosUsuario.historial_actividad?.find(a => a.fecha === fechaBusqueda);
 
-            if (tieneDatos) cell.classList.add("has-data");
+            if (tieneDatos) {
+                cell.classList.add("has-data");
+                cell.setAttribute("aria-label", `Día ${day}, tiene datos registrados`);
+            } else {
+                cell.setAttribute("aria-label", `Día ${day}`);
+            }
 
             if (new Date(year, month, day) > hoy) {
                 cell.classList.add("disabled");
+                cell.setAttribute("aria-disabled", "true");
+                cell.setAttribute("tabindex", "-1");
             } else {
-                cell.addEventListener("click", () => {
+                const selectDay = () => {
                     document.querySelectorAll('.calendar__day').forEach(d => d.classList.remove('selected'));
                     cell.classList.add('selected');
                     mostrarDatosDia(day, month, year);
+                };
+
+                cell.addEventListener("click", selectDay);
+                cell.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        selectDay();
+                    }
                 });
             }
             calendarGrid.appendChild(cell);

@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     const inputEmail = document.getElementById("emailLogin"); // Usando el ID del HTML
     const inputPassword = document.getElementById("passLogin");
+    const loginForm = document.getElementById("loginForm");
     const btnConfirmar = document.getElementById("confirmar");
     const loginError = document.getElementById("loginError");
 
-    if(btnConfirmar) {
-        btnConfirmar.addEventListener("click", async (e) => {
+    if(loginForm) {
+        loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             
             const email = inputEmail.value.trim();

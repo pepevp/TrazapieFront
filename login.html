@@ -23,16 +23,25 @@
         </div>
 
         <div class="login">
+            <h1 class="sr-only">Trazapié - Iniciar Sesión</h1>
             <img src="img/logoTrazapie3.png" alt="Logotipo de Trazapié" class="logo-img">
 
             <h2>Cuenta de Ingreso</h2>
 
-            <input id="emailLogin" class="box" type="email" placeholder="Correo electrónico" required autocomplete="email">
-            <input id="passLogin" class="box" type="password" placeholder="Contraseña" required autocomplete="current-password">
+            <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
+                <label for="emailLogin" class="sr-only">Correo electrónico</label>
+                <input id="emailLogin" class="box" type="email" placeholder="Correo electrónico" required
+                    autocomplete="email">
 
-            <button id="confirmar" class="boton" type="button">Acceso</button>
+                <label for="passLogin" class="sr-only">Contraseña</label>
+                <input id="passLogin" class="box" type="password" placeholder="Contraseña" required
+                    autocomplete="current-password">
 
-            <div id="loginError" class="login-error" role="alert" aria-live="assertive" style="color: #d32f2f; margin-top: 10px; font-weight: bold;"></div>
+                <button id="confirmar" class="boton" type="submit">Acceso</button>
+            </form>
+
+            <div id="loginError" class="login-error" role="alert" aria-live="assertive"
+                style="color: #d32f2f; margin-top: 10px; font-weight: bold;"></div>
 
             <a href="registro.html" class="registrate link-registro">¿No tienes una cuenta? Regístrate</a>
         </div>

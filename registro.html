@@ -10,58 +10,64 @@
 
 <body>
     <main>
-        <img src="img/logoTrazapie3.png" class="logo" alt="logo"
-            style="display: block; margin: 0 auto; max-width: 200px;">
+        <header>
+            <h1 class="titulo-seccion">Crear Nueva Cuenta</h1>
+        </header>
 
-        <div class="campos">
-            <div class="filas">
-                <p>Nombre</p>
-                <input id="regNombre" class="box" type="text" placeholder="Tu nombre">
+        <form id="registroForm" class="campos-contenedor">
+            <div class="campos">
+                <div class="filas">
+                    <label for="regNombre">Nombre</label>
+                    <input id="regNombre" class="box" type="text" placeholder="Tu nombre" required>
+                </div>
             </div>
-        </div>
 
-        <div class="campos">
-            <div class="filas">
-                <p>Email</p>
-                <input id="regEmail" class="box" type="email" placeholder="correo@ejemplo.com">
+            <div class="campos">
+                <div class="filas">
+                    <label for="regEmail">Email</label>
+                    <input id="regEmail" class="box" type="email" placeholder="correo@ejemplo.com" required>
+                </div>
             </div>
-        </div>
 
-        <div class="campos">
-            <div class="filas">
-                <p>Contraseña</p>
-                <input id="regPassword" class="box" type="password" placeholder="Tu contraseña">
+            <div class="campos">
+                <div class="filas">
+                    <label for="regPassword">Contraseña</label>
+                    <input id="regPassword" class="box" type="password" placeholder="Tu contraseña" required>
+                </div>
             </div>
-        </div>
 
-        <div class="campos">
-            <div class="filas">
-                <p>Edad</p>
-                <input id="regEdad" class="box" type="number" placeholder="Ej: 25">
+            <div class="campos">
+                <div class="filas">
+                    <label for="regEdad">Edad</label>
+                    <input id="regEdad" class="box" type="number" placeholder="Ej: 25" required>
+                </div>
             </div>
-        </div>
 
-        <div class="campos">
-            <div class="filas">
-                <p>Peso (kg)</p>
-                <input id="regPeso" class="box" type="number" placeholder="Ej: 70">
+            <div class="campos">
+                <div class="filas">
+                    <label for="regPeso">Peso (kg)</label>
+                    <input id="regPeso" class="box" type="number" placeholder="Ej: 70" required>
+                </div>
             </div>
-        </div>
 
-        <div class="campos">
-            <div class="filas">
-                <p>Altura (cm)</p>
-                <input id="regAltura" class="box" type="number" placeholder="Ej: 175">
+            <div class="campos">
+                <div class="filas">
+                    <label for="regAltura">Altura (cm)</label>
+                    <input id="regAltura" class="box" type="number" placeholder="Ej: 175" required>
+                </div>
             </div>
-        </div>
 
-        <button id="confirmar2" class="boton">Confirmar Registro</button>
+            <button id="confirmar2" class="boton" type="submit">Confirmar Registro</button>
+        </form>
 
-        <div id="registroMsg" style="text-align: center; margin-top: 10px; font-weight: bold;"></div>
+        <div id="registroMsg" role="alert" aria-live="polite"
+            style="text-align: center; margin-top: 10px; font-weight: bold;"></div>
 
-        <p style="text-align: center; margin-top: 15px;">
-            <a href="login.html" class="registrate">¿Ya tienes cuenta? Entra aquí</a>
-        </p>
+        <nav aria-label="Navegación secundaria">
+            <p style="text-align: center; margin-top: 15px;">
+                <a href="login.html" class="registrate">¿Ya tienes cuenta? Entra aquí</a>
+            </p>
+        </nav>
     </main>
 
     <script src="scripts/utilidades.js"></script>

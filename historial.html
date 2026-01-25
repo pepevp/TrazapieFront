@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trazapié - Historial</title>
     <link rel="stylesheet" href="estilos/main.css">
 </head>
+
 <body>
     <main class="page">
         <header class="banda">
             <div class="bandaIzquierda">
-                <a href="dashboard.html">
-                    <img src="img/logoTrazapie3.png" alt="icono" class="bandaIcono">
+                <a href="dashboard.html" aria-label="Trazapié - Ir a página de inicio">
+                    <img src="img/logoTrazapie3.png" alt="Logotipo Trazapié" class="bandaIcono">
                 </a>
+                <h1 class="sr-only">Trazapié - Historial de Actividad</h1>
             </div>
             <div class="bandaDerecha">
                 <p class="bandaTexto" id="nombreUsuario">--</p>
                 <div class="menu">
-                    <img src="img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
-                    <ul class="desplegable" id="menuDesplegable">
-                        <li><a href="dashboard.html">Página de inicio</a></li>
-                        <li><a href="perfil.html">Perfil</a></li>
-                        <li><a href="login.html" id="logout">Cerrar sesión</a></li>
+                    <button id="menuToggle" class="bandaMenu-btn" aria-expanded="false" aria-controls="menuDesplegable"
+                        aria-haspopup="true" aria-label="Menú de usuario">
+                        <img src="img/persona.png" alt="" aria-hidden="true">
+                    </button>
+
+                    <ul class="desplegable" id="menuDesplegable" role="menu">
+                        <li role="none"><a href="dashboard.html" role="menuitem">Página de inicio</a></li>
+                        <li role="none"><a href="perfil.html" role="menuitem">Perfil</a></li>
+                        <li role="none"><a href="login.html" id="logout" role="menuitem">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
-        <div class="calendario">
+        <section class="calendario">
             <div class="calendarioHeader">
-                <button class="calendar__nav-btn" id="prev">&#10094;</button>
+                <button class="calendar__nav-btn" id="prev" aria-label="Mes anterior">&#10094;</button>
                 <div class="calendar__title-container">
-                    <h2 class="calendarioTitulo" id="month-year"></h2>
+                    <h2 class="calendarioTitulo" id="month-year" aria-live="polite"></h2>
                 </div>
-                <button class="calendar__nav-btn" id="next">&#10095;</button>
+                <button class="calendar__nav-btn" id="next" aria-label="Mes siguiente">&#10095;</button>
             </div>
 
             <div class="calendarioGrid" id="calendar-grid">
@@ -45,52 +52,53 @@
                 <div class="calendarNombreDia">Sáb</div>
                 <div class="calendarNombreDia">Dom</div>
             </div>
-        </div>
+            </div>
 
-        <div class="datoHistorial">
-    <div class="datoFila">
-        <p id="p-pasos">
-            Pasos: <span id="valor-pasos">0</span>
-        </p>
-        <svg class="svg-icon svg-steps" viewBox="0 0 24 24" fill="currentColor">
-            <g class="prints">
-                <!-- Left Foot -->
-                <path class="foot-left"
-                    d="M8,18 c-1.5,0-2.5-1.5-2.5-3 s1-3,2.5-3 s2.5,1.5,2.5,3 S9.5,18,8,18z M8,11 c-0.8,0-1.5-0.7-1.5-1.5 S7.2,8,8,8 s1.5,0.7,1.5,1.5 S8.8,11,8,11z" />
-                <!-- Right Foot -->
-                <path class="foot-right"
-                    d="M16,14 c-1.5,0-2.5-1.5-2.5-3 s1-3,2.5-3 s2.5,1.5,2.5,3 S17.5,14,16,14z M16,7 c-0.8,0-1.5-0.7-1.5-1.5 S15.2,4,16,4 s1.5,0.7,1.5,1.5 S16.7,7,16,7z" />
-            </g>
-        </svg>
-    </div>
+            <div class="datoHistorial">
+                <div class="datoFila">
+                    <p id="p-pasos">
+                        Pasos: <span id="valor-pasos">0</span>
+                    </p>
+                    <svg class="svg-icon svg-steps" viewBox="0 0 24 24" fill="currentColor">
+                        <g class="prints">
+                            <!-- Left Foot -->
+                            <path class="foot-left"
+                                d="M8,18 c-1.5,0-2.5-1.5-2.5-3 s1-3,2.5-3 s2.5,1.5,2.5,3 S9.5,18,8,18z M8,11 c-0.8,0-1.5-0.7-1.5-1.5 S7.2,8,8,8 s1.5,0.7,1.5,1.5 S8.8,11,8,11z" />
+                            <!-- Right Foot -->
+                            <path class="foot-right"
+                                d="M16,14 c-1.5,0-2.5-1.5-2.5-3 s1-3,2.5-3 s2.5,1.5,2.5,3 S17.5,14,16,14z M16,7 c-0.8,0-1.5-0.7-1.5-1.5 S15.2,4,16,4 s1.5,0.7,1.5,1.5 S16.7,7,16,7z" />
+                        </g>
+                    </svg>
+                </div>
 
-    <div class="datoFila">
-        <p id="p-calorias">
-            Calorías: <span id="valor-calorias">0</span>
-        </p>
-        <svg class="svg-icon svg-heart" viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-        </svg>
-    </div>
+                <div class="datoFila">
+                    <p id="p-calorias">
+                        Calorías: <span id="valor-calorias">0</span>
+                    </p>
+                    <svg class="svg-icon svg-heart" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </div>
 
-    <div class="datoFila">
-        <p id="p-tiempo">
-            Tiempo de actividad: <span id="valor-tiempo">0 min</span>
-        </p>
-        <svg class="svg-icon svg-clock" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
-            <line class="minute-hand" x1="12" y1="12" x2="12" y2="6" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" />
-            <line class="hour-hand" x1="12" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" />
-        </svg>
-    </div>
-</div>
+                <div class="datoFila">
+                    <p id="p-tiempo">
+                        Tiempo de actividad: <span id="valor-tiempo">0 min</span>
+                    </p>
+                    <svg class="svg-icon svg-clock" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+                        <line class="minute-hand" x1="12" y1="12" x2="12" y2="6" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line class="hour-hand" x1="12" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+            </div>
 
     </main>
 
     <script src="scripts/utilidades.js"></script>
     <script src="scripts/calendario.js"></script>
 </body>
+
 </html>

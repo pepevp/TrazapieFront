@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,30 +12,36 @@
     <main>
         <header class="banda">
             <div class="bandaIzquierda">
-                <a href="dashboard.html">
-                    <img src="img/logoTrazapie3.png" alt="icono" class="bandaIcono">
+                <a href="dashboard.html" aria-label="Trazapié - Ir a página de inicio">
+                    <img src="img/logoTrazapie3.png" alt="Logotipo Trazapié" class="bandaIcono">
                 </a>
+                <h1 class="sr-only">Trazapié - Logros e Hitos</h1>
             </div>
             <div class="bandaDerecha">
                 <p class="bandaTexto" id="nombreUsuario">--</p>
                 <div class="menu">
-                    <img src="img/persona.png" alt="Menú" class="bandaMenu" id="menuToggle">
-                    <ul class="desplegable" id="menuDesplegable">
-                        <li><a href="dashboard.html">Página de inicio</a></li>
-                        <li><a href="perfil.html">Perfil</a></li>
-                        <li><a href="login.html" id="logout">Cerrar sesión</a></li>
+                    <button id="menuToggle" class="bandaMenu-btn" aria-expanded="false" aria-controls="menuDesplegable"
+                        aria-haspopup="true" aria-label="Menú de usuario">
+                        <img src="img/persona.png" alt="" aria-hidden="true">
+                    </button>
+
+                    <ul class="desplegable" id="menuDesplegable" role="menu">
+                        <li role="none"><a href="dashboard.html" role="menuitem">Página de inicio</a></li>
+                        <li role="none"><a href="perfil.html" role="menuitem">Perfil</a></li>
+                        <li role="none"><a href="login.html" id="logout" role="menuitem">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
-        <div class="contenedor-logros">
-            
+        <section class="contenedor-logros">
+            <h2 class="titulo-seccion">Tus Logros</h2>
             <div class="grid-logros">
-                
-                <div class="tarjeta-logro desbloqueado">
+
+                <div class="tarjeta-logro desbloqueado" tabindex="0" role="article"
+                    aria-label="Logro desbloqueado: Hitos de pasos. 20.000 pasos.">
                     <div class="img-logro">
-                        <img src="img/20kPasos.png" alt="Logro 20k">
+                        <img src="img/20kPasos.png" alt="" aria-hidden="true">
                     </div>
                     <div class="info-logro">
                         <h3>Hitos de pasos</h3>
@@ -42,9 +49,10 @@
                     </div>
                 </div>
 
-                <div class="tarjeta-logro desbloqueado">
+                <div class="tarjeta-logro desbloqueado" tabindex="0" role="article"
+                    aria-label="Logro desbloqueado: Objetivos cumplidos. 3 días totales.">
                     <div class="img-logro">
-                        <img src="img/3dias.png" alt="Logro 3 días">
+                        <img src="img/3dias.png" alt="" aria-hidden="true">
                     </div>
                     <div class="info-logro">
                         <h3>Objetivos cumplidos</h3>
@@ -52,9 +60,10 @@
                     </div>
                 </div>
 
-                <div class="tarjeta-logro desbloqueado">
+                <div class="tarjeta-logro desbloqueado" tabindex="0" role="article"
+                    aria-label="Logro desbloqueado: Racha constante. 5 días seguidos.">
                     <div class="img-logro">
-                        <img src="img/racha5dias.png" alt="Logro racha">
+                        <img src="img/racha5dias.png" alt="" aria-hidden="true">
                     </div>
                     <div class="info-logro">
                         <h3>Racha constante</h3>
@@ -62,10 +71,11 @@
                     </div>
                 </div>
 
-                <div class="tarjeta-logro bloqueado">
+                <div class="tarjeta-logro bloqueado" tabindex="0" role="article"
+                    aria-label="Logro bloqueado: Logro oculto. Sigue caminando para descubrirlo.">
                     <div class="img-logro">
-                        <img src="img/100kPasos.png" alt="Logro oculto">
-                        <div class="candado-overlay">🔒</div>
+                        <img src="img/100kPasos.png" alt="" aria-hidden="true">
+                        <div class="candado-overlay" aria-hidden="true">🔒</div>
                     </div>
                     <div class="info-logro">
                         <h3>Logro oculto</h3>
@@ -73,10 +83,11 @@
                     </div>
                 </div>
 
-                <div class="tarjeta-logro bloqueado">
+                <div class="tarjeta-logro bloqueado" tabindex="0" role="article"
+                    aria-label="Logro bloqueado: Logro oculto. Sigue caminando para descubrirlo.">
                     <div class="img-logro">
-                        <img src="img/logroFinal.png" alt="Logro oculto">
-                        <div class="candado-overlay">🔒</div>
+                        <img src="img/logroFinal.png" alt="" aria-hidden="true">
+                        <div class="candado-overlay" aria-hidden="true">🔒</div>
                     </div>
                     <div class="info-logro">
                         <h3>Logro oculto</h3>
@@ -85,11 +96,12 @@
                 </div>
 
             </div>
-        </div>
+            </div>
     </main>
 
     <footer>
         <script src="scripts/utilidades.js"></script>
     </footer>
 </body>
+
 </html>

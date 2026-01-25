@@ -108,9 +108,12 @@ app.post('/api/registro', async (req, res) => {
 // 2. RUTA DE LOGIN
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
+    console.log(`Login attempt: email=${email}, password=${password}`);
     try {
         const usuario = await User.findOne({ "datos_personales.email": email });
+        console.log('User found in DB:', usuario ? usuario.datos_personales.email : 'NULL');
         if (usuario) {
+            console.log(`Comparing passwords: DB=${usuario.datos_personales.password}, Input=${password}`);
             if (usuario.datos_personales.password === password) {
                 res.json({ 
                     success: true, 

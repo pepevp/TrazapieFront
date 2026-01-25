@@ -10,9 +10,26 @@
 
 body {
   background-color: #FAF9F6;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233C887E' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D665E' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   min-height: 100vh;
   background-attachment: fixed;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus {
+  outline: 3px solid #A17C6B;
+  outline-offset: 2px;
 }
 
 main {
@@ -67,8 +84,13 @@ video#bgVideo {
 }
 
 @keyframes panVideo {
-  0% { transform: translate(-60%, -50%); }
-  100% { transform: translate(-40%, -50%); }
+  0% {
+    transform: translate(-60%, -50%);
+  }
+
+  100% {
+    transform: translate(-40%, -50%);
+  }
 }
 
 .video-overlay {
@@ -105,18 +127,19 @@ video#bgVideo {
 
 .video-btn:hover {
   background: white;
-  color: #3C887E;
+  color: #2D665E;
 }
 
-.logo {
+.logo,
+.logo-img {
   width: 216px;
   max-width: 80%;
-  margin: 80px auto 0 auto;
-  justify-content: center;
+  margin: 0 auto;
+  display: block;
 }
 
 h2 {
-  color: #3C887E;
+  color: #2D665E;
   font-size: 30px;
   font-family: "Inter", sans-serif;
 }
@@ -137,12 +160,19 @@ input:focus {
   outline: none;
 }
 
-input::-moz-placeholder { color: #313131; }
-input::placeholder { color: #313131; }
+input::-moz-placeholder {
+  color: #313131;
+}
+
+input::placeholder {
+  color: #313131;
+}
 
 .boton {
   padding: 14px 12px;
-  background-color: #3C887E;
+  background-color: #2D665E;
+  color: white;
+  /* Contrast fix */
   font-size: 24px;
   width: 200px;
   max-width: 80%;
@@ -179,12 +209,17 @@ input::placeholder { color: #313131; }
 }
 
 @keyframes rotation {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .registrate {
-  color: #3C887E;
+  color: #2D665E;
   font-size: 24px;
   padding: 14px 12px;
   word-wrap: break-word;
@@ -209,7 +244,7 @@ input::placeholder { color: #313131; }
   width: 100px;
   margin: 0;
   text-align: left;
-  color: #3C887E;
+  color: #2D665E;
   font-size: 24px;
 }
 
@@ -247,33 +282,59 @@ input::placeholder { color: #313131; }
   cursor: pointer;
 }
 
-.bandaIcono:hover { transform: scale(1.1); }
+.bandaIcono:hover {
+  transform: scale(1.1);
+}
 
 .bandaIcono path {
-  fill: #3C887E;
+  fill: #2D665E;
   transition: fill 0.3s ease;
 }
 
-.bandaIcono:hover path { fill: #E63946; }
+.bandaIcono:hover path {
+  fill: #E63946;
+}
 
 @media (max-width: 768px) {
-  .bandaIzquierda { padding-left: 20px; }
-  .bandaIcono { height: 100px; }
+  .bandaIzquierda {
+    padding-left: 20px;
+  }
+
+  .bandaIcono {
+    height: 100px;
+  }
 }
 
 .bandaTexto {
   font-size: 32px;
-  color: #3C887E;
+  color: #2D665E;
   font-family: "Inter", sans-serif;
   font-weight: bold;
   margin: 0;
 }
 
-.bandaMenu {
-  display: flex;
+.bandaMenu-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   width: 80px;
   height: 80px;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.bandaMenu-btn:hover,
+.bandaMenu-btn:focus {
+  background-color: rgba(45, 102, 94, 0.1);
+}
+
+.bandaMenu-btn img {
+  width: 80px;
+  height: 80px;
 }
 
 /* --- DASHBOARD ELEMENTS --- */
@@ -294,7 +355,9 @@ input::placeholder { color: #313131; }
   grid-row: 1/2;
 }
 
-.mapa img { width: 100%; }
+.mapa img {
+  width: 100%;
+}
 
 .datos {
   grid-column: 2/3;
@@ -308,23 +371,26 @@ input::placeholder { color: #313131; }
 .datoFila {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  line-height: 4;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
 }
 
 .datoFila p {
-  color: #3C887E;
+  color: #2D665E;
   font-size: 18px;
 }
 
-.datoFila img { display: none; }
+.datoFila img {
+  display: none;
+}
 
 .svg-icon {
   width: 45px;
   height: 45px;
-  color: #3C887E;
+  color: #2D665E;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 /* SVG Animations */
@@ -334,11 +400,25 @@ input::placeholder { color: #313131; }
 }
 
 @keyframes heartbeat {
-  0% { transform: scale(1); }
-  15% { transform: scale(1.3); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.15); }
-  60% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.3);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.15);
+  }
+
+  60% {
+    transform: scale(1);
+  }
 }
 
 .svg-clock:hover .minute-hand {
@@ -351,15 +431,35 @@ input::placeholder { color: #313131; }
   animation: spin 12s linear infinite;
 }
 
-@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-.svg-steps:hover .foot-left { animation: walk 1s ease-in-out infinite; }
-.svg-steps:hover .foot-right { animation: walk 1s ease-in-out infinite 0.5s; }
+.svg-steps:hover .foot-left {
+  animation: walk 1s ease-in-out infinite;
+}
+
+.svg-steps:hover .foot-right {
+  animation: walk 1s ease-in-out infinite 0.5s;
+}
 
 @keyframes walk {
-  0% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(-3px); opacity: 0.6; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-3px);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Enlaces del Dashboard (No borrar) */
@@ -397,7 +497,9 @@ input::placeholder { color: #313131; }
 }
 
 /* --- MENÚ DESPLEGABLE --- */
-.menu { position: relative; }
+.menu {
+  position: relative;
+}
 
 .desplegable {
   display: block;
@@ -408,7 +510,7 @@ input::placeholder { color: #313131; }
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #3C887E;
+  background-color: #2D665E;
   list-style: none;
   padding: 10px 0;
   width: 200px;
@@ -444,137 +546,140 @@ input::placeholder { color: #313131; }
 /* ========================================= */
 
 .contenedor-logros {
-    width: 100%;
-    max-width: 1400px;
-    padding: 60px 20px;
-    margin: 0 auto;
-    text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  padding: 60px 20px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .titulo-seccion {
-    color: #3C887E;
-    font-size: 36px;
-    font-weight: 800;
-    margin-bottom: 50px;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+  color: #2D665E;
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 50px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
 }
 
 /* SISTEMA DE REJILLA (GRID) RESPONSIVO */
 .grid-logros {
-    display: grid;
-    /* Esto hace la magia: crea columnas automáticas de mínimo 280px */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-    justify-content: center;
-    padding: 10px;
+  display: grid;
+  /* Esto hace la magia: crea columnas automáticas de mínimo 280px */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  justify-content: center;
+  padding: 10px;
 }
 
 /* TARJETA INDIVIDUAL (CARD) */
 .tarjeta-logro {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    /* Sombra elegante y suave */
-    box-shadow: 0 10px 30px rgba(60, 136, 126, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    position: relative;
-    overflow: hidden;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  /* Sombra elegante y suave */
+  box-shadow: 0 10px 30px rgba(60, 136, 126, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 /* Efecto Hover solo en desbloqueados */
 .tarjeta-logro.desbloqueado {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .tarjeta-logro.desbloqueado:hover {
-    transform: translateY(-10px); /* Levita hacia arriba */
-    box-shadow: 0 20px 40px rgba(60, 136, 126, 0.25);
+  transform: translateY(-10px);
+  /* Levita hacia arriba */
+  box-shadow: 0 20px 40px rgba(60, 136, 126, 0.25);
 }
 
 /* IMAGEN DEL LOGRO */
 .img-logro {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .img-logro img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    /* Sombra proyectada por la imagen */
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
-    transition: transform 0.4s ease;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Sombra proyectada por la imagen */
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+  transition: transform 0.4s ease;
 }
 
 .tarjeta-logro.desbloqueado:hover .img-logro img {
-    transform: scale(1.1) rotate(3deg); /* Zoom y ligera rotación divertida */
+  transform: scale(1.1) rotate(3deg);
+  /* Zoom y ligera rotación divertida */
 }
 
 /* TEXTOS */
 .info-logro {
-    width: 100%;
+  width: 100%;
 }
 
 .info-logro h3 {
-    color: #2b2b2b;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 8px;
+  color: #2b2b2b;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .info-logro p {
-    color: #888;
-    font-size: 16px;
-    margin: 0;
+  color: #888;
+  font-size: 16px;
+  margin: 0;
 }
 
 .info-logro .dato-destacado {
-    color: #3C887E; /* Verde corporativo */
-    font-size: 18px;
-    font-weight: 700;
+  color: #2D665E;
+  /* Verde corporativo */
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* --- ESTILOS PARA LOGROS BLOQUEADOS --- */
 
 .tarjeta-logro.bloqueado {
-    background: #f4f4f4;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.03);
-    border: 1px solid #e0e0e0;
+  background: #f4f4f4;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e0e0e0;
 }
 
 .tarjeta-logro.bloqueado .img-logro img {
-    /* Efecto gris y borroso */
-    filter: grayscale(100%) opacity(0.3) blur(2px); 
+  /* Efecto gris y borroso */
+  filter: grayscale(100%) opacity(0.3) blur(2px);
 }
 
 .candado-overlay {
-    position: absolute;
-    font-size: 50px;
-    opacity: 0.5;
-    z-index: 10;
-    /* Centrado absoluto */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 50px;
+  opacity: 0.5;
+  z-index: 10;
+  /* Centrado absoluto */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .tarjeta-logro.bloqueado h3 {
-    color: #999;
+  color: #999;
 }
 
 .tarjeta-logro.bloqueado p {
-    color: #aaa;
-    font-style: italic;
+  color: #aaa;
+  font-style: italic;
 }
 
 
@@ -642,9 +747,13 @@ input::placeholder { color: #313131; }
   transition: background 0.2s ease;
 }
 
-.calendar__day:hover { background: #e0e0e0; }
+.calendar__day:hover {
+  background: #e0e0e0;
+}
 
-.calendar__empty { height: 40px; }
+.calendar__empty {
+  height: 40px;
+}
 
 /* --- HISTORIAL Y PERFIL --- */
 .datoHistorial {
@@ -660,7 +769,8 @@ input::placeholder { color: #313131; }
   gap: 8px;
   font-size: 22px;
   margin: 0;
-  color: #3C887E;
+  color: #2D665E;
+  white-space: nowrap;
 }
 
 .datoHistorial img {
@@ -703,7 +813,10 @@ input::placeholder { color: #313131; }
   margin-top: 80px;
 }
 
-.columnaDerecha p { color: #3C887E; padding: 8px; }
+.columnaDerecha p {
+  color: #3C887E;
+  padding: 8px;
+}
 
 .columnaBoton {
   text-align: center;
@@ -719,4 +832,6 @@ input::placeholder { color: #313131; }
   align-self: center;
 }
 
-.columnaBoton:hover { background-color: #A17C6B; }
+.columnaBoton:hover {
+  background-color: #A17C6B;
+}
