@@ -794,17 +794,126 @@ input::placeholder {
   gap: 12px;
 }
 
-.columnaIzquierda img {
+
+/* ========================================= */
+/* --- FAQ (PREGUNTAS FRECUENTES) --- */
+/* ========================================= */
+
+.contenedor-faq {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  max-width: 800px;
+  padding: 60px 20px;
+  margin: 0 auto;
+}
+
+.faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(45, 102, 94, 0.1);
+}
+
+.faq-item:hover {
+  box-shadow: 0 10px 20px rgba(60, 136, 126, 0.15);
+  transform: translateY(-2px);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 24px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2D665E;
+  transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+  background-color: rgba(45, 102, 94, 0.05);
+}
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background-color: #A17C6B;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+/* Línea vertical */
+.faq-icon::before {
+  width: 2px;
+  height: 16px;
+}
+
+/* Línea horizontal */
+.faq-icon::after {
+  width: 16px;
+  height: 2px;
+}
+
+/* Estado activo (abierto) */
+.faq-item.active .faq-icon {
+  transform: rotate(90deg);
+}
+
+.faq-item.active .faq-icon::before {
+  opacity: 0;
+  /* Desaparece la vertical para dejar un menos */
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  /* Altura suficiente para el contenido */
+  opacity: 1;
+  padding: 0 24px 24px 24px;
+}
+
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  padding: 0 24px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
 }
 
 .columnaCentral p {
-  color: #3C887E;
-  font-weight: bold;
-  padding: 4px;
-  text-align: center;
+  color: #2D665E;
+  margin-bottom: 20px;
+}
+
+color: #3C887E;
+font-weight: bold;
+padding: 4px;
+text-align: center;
 }
 
 .columnaDerecha {

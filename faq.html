@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trazapié - Preguntas Frecuentes</title>
+    <link rel="stylesheet" href="estilos/main.css">
+</head>
+
+<body>
+    <main>
+        <header class="banda">
+            <div class="bandaIzquierda">
+                <a href="dashboard.html" aria-label="Trazapié - Ir a página de inicio">
+                    <img src="img/logoTrazapie3.png" alt="Logotipo Trazapié" class="bandaIcono">
+                </a>
+                <h1 class="sr-only">Preguntas Frecuentes - Trazapié</h1>
+            </div>
+            <div class="bandaDerecha">
+                <p class="bandaTexto" id="nombreUsuario">--</p>
+                <div class="menu">
+                    <button id="menuToggle" class="bandaMenu-btn" aria-expanded="false" aria-controls="menuDesplegable"
+                        aria-haspopup="true" aria-label="Menú de usuario">
+                        <img src="img/persona.png" alt="" aria-hidden="true">
+                    </button>
+
+                    <ul class="desplegable" id="menuDesplegable" role="menu">
+                        <li role="none"><a href="dashboard.html" role="menuitem">Página de inicio</a></li>
+                        <li role="none"><a href="perfil.html" role="menuitem">Perfil</a></li>
+                        <li role="none"><a href="faq.html" role="menuitem">Preguntas Frecuentes</a></li>
+                        <li role="none"><a href="login.html" id="logout" role="menuitem">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <section class="contenedor-faq">
+            <h2 class="titulo-seccion">Preguntas Frecuentes</h2>
+
+            <div class="faq-grid">
+                <!-- Pregunta 1 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Cómo cuenta Trazapié mis pasos?</span>
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Trazapié utiliza los sensores de movimiento de tu dispositivo para detectar cada paso que
+                            das. Asegúrate de llevar tu dispositivo contigo mientras caminas para un registro preciso.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Cómo cambio mi objetivo diario?</span>
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Puedes modificar tu objetivo de pasos diarios desde la sección "Perfil". Ingresa el nuevo
+                            valor en el campo "Objetivo diario" y pulsa "Guardar Cambios".</p>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Cómo se calculan las calorías?</span>
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>El cálculo de calorías es una estimación basada en tu actividad, peso y altura. Utilizamos
+                            una fórmula estándar que multiplica tus pasos por un factor de quema calórica ajustado a tus
+                            datos personales.</p>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Puedo sincronizar con otros relojes?</span>
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Actualmente Trazapié funciona de manera independiente utilizando el acelerómetro de tu
+                            teléfono. Estamos trabajando en integraciones con wearables para futuras actualizaciones.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Cómo restablezco mi contraseña?</span>
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Por seguridad, si has olvidado tu contraseña, contacta con el soporte técnico o utiliza la
+                            opción "¿Olvidaste tu contraseña?" en la pantalla de inicio de sesión para recibir
+                            instrucciones en tu correo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="scripts/utilidades.js"></script>
+    <script src="scripts/faq.js"></script>
+</body>
+
+</html>
