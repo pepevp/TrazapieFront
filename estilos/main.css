@@ -788,6 +788,20 @@ input::placeholder {
   align-items: center;
 }
 
+#imgPerfil {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 20px;
+  border: 5px solid #2D665E;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+#imgPerfil:hover {
+  transform: scale(1.05);
+}
+
 .columna {
   display: flex;
   flex-direction: column;
@@ -910,10 +924,12 @@ input::placeholder {
   margin-bottom: 20px;
 }
 
-color: #3C887E;
-font-weight: bold;
-padding: 4px;
-text-align: center;
+
+.input-perfil {
+  color: #3C887E;
+  font-weight: bold;
+  padding: 4px;
+  text-align: center;
 }
 
 .columnaDerecha {
