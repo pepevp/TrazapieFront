@@ -36,3 +36,7 @@ Hemos incluido en la entrega un video demostrativo (TrazapieMovil.mp4) donde mos
 La prueba que se muestra en el video ha sido grabada directamente desde el móvil de Pepe.
 
 En la grabación se puede apreciar que la aplicación funciona perfectamente, carga las pantallas y responde a la interacción en el dispositivo físico.
+
+
+Para poder conectar a la base de datos añadir esto en un archivo .env en la carpeta back:
+MONGO_URI=mongodb+srv://jesus_trazapie:JESsancat2000%2E@cluster0.nc0jutv.mongodb.net/TrazapieDB?appName=Cluster0
