@@ -22,9 +22,85 @@ main {
     flex-direction: column;
     width: 300px;
     max-width: 90%;
-    margin: 0 auto;
+    margin: 10vh auto;
     text-align: center;
     gap: 20px;
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video#bgVideo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    animation: panVideo 15s linear infinite alternate;
+}
+
+@keyframes panVideo {
+    0% {
+        transform: scale(1.1) translateX(-5%);
+    }
+
+    100% {
+        transform: scale(1.1) translateX(5%);
+    }
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 20;
+}
+
+.video-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+
+    &:hover {
+        background: white;
+        color: variables.$colorPrimario;
+    }
 }
 
 .logo {
@@ -75,7 +151,7 @@ input {
         background-color: variables.$colorSecundario;
         font-weight: bold;
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -118,7 +194,11 @@ input {
     padding: 0 50px; // Añadido padding para evitar pegarse a los bordes en pantallas medias
 }
 
-.bandaIzquierda { padding-left: 20px; } // Ajustado para ser más flexible que 300px
+.bandaIzquierda {
+    padding-left: 20px;
+}
+
+// Ajustado para ser más flexible que 300px
 .bandaDerecha {
     display: flex;
     gap: 15px;
@@ -126,7 +206,15 @@ input {
     align-items: center;
 }
 
-.bandaIcono { width: 180px; transition: 0.3s; &:hover { opacity: 0.8; } }
+.bandaIcono {
+    width: 180px;
+    transition: 0.3s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
 .bandaTexto {
     font-size: 28px;
     color: variables.$colorPrimario;
@@ -139,7 +227,10 @@ input {
     cursor: pointer;
     border-radius: 50%;
     transition: 0.3s;
-    &:hover { background: rgba(0,0,0,0.05); }
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
 }
 
 // --- CONTENIDO DASHBOARD ---
@@ -152,10 +243,10 @@ input {
     margin: 40px auto;
 }
 
-.mapa img { 
-    width: 100%; 
+.mapa img {
+    width: 100%;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .datos {
@@ -170,28 +261,42 @@ input {
     align-items: center;
     justify-content: flex-end;
     gap: 15px;
-    
-    p { 
-        color: variables.$colorPrimario; 
-        font-size: 20px; 
+
+    p {
+        color: variables.$colorPrimario;
+        font-size: 20px;
         font-weight: bold;
     }
-    img { width: 45px; height: 45px; }
+
+    img {
+        width: 45px;
+        height: 45px;
+    }
 }
 
-.logros, .historial {
+.logros,
+.historial {
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 
-    img { width: 100%; max-width: 350px; }
-    &:hover { transform: scale(1.08); }
+    img {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    &:hover {
+        transform: scale(1.08);
+    }
 }
 
 // --- MENÚ DESPLEGABLE ---
-.menu { position: relative; }
+.menu {
+    position: relative;
+}
+
 .desplegable {
     display: none;
     position: absolute;
@@ -202,22 +307,25 @@ input {
     padding: 10px 0;
     width: 220px;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 100;
 
     li {
         padding: 12px 25px;
         cursor: pointer;
         transition: 0.2s;
-        
-        a { 
-            color: white; 
-            text-decoration: none; 
+
+        a {
+            color: white;
+            text-decoration: none;
             font-size: 18px;
             display: block;
             width: 100%;
         }
-        &:hover { background-color: variables.$colorSecundario; }
+
+        &:hover {
+            background-color: variables.$colorSecundario;
+        }
     }
 }
 
@@ -228,7 +336,7 @@ input {
     padding: 25px;
     border-radius: 20px;
     margin: 40px auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .calendarioHeader {
@@ -250,7 +358,12 @@ input {
     font-size: 18px;
     cursor: pointer;
     transition: 0.3s;
-    &:hover { transform: scale(1.1); background: variables.$colorPrimario; color: white; }
+
+    &:hover {
+        transform: scale(1.1);
+        background: variables.$colorPrimario;
+        color: white;
+    }
 }
 
 .calendarioTitulo {
@@ -312,7 +425,10 @@ input {
         color: white !important;
         transform: scale(1.15);
         box-shadow: 0 4px 10px rgba(variables.$colorPrimario, 0.3);
-        &::after { background-color: white; }
+
+        &::after {
+            background-color: white;
+        }
     }
 
     &.disabled {
@@ -340,7 +456,7 @@ input {
         padding: 10px 20px;
         background: white;
         border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
         font-size: 20px;
         color: variables.$colorPrimario;
         font-weight: 600;
@@ -352,7 +468,11 @@ input {
             font-size: 22px;
         }
     }
-    img { width: 35px; height: 35px; }
+
+    img {
+        width: 35px;
+        height: 35px;
+    }
 }
 
 // --- PERFIL ---
@@ -365,13 +485,13 @@ input {
     padding: 30px;
     background: white;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
-.columnaIzquierda img { 
-    width: 100%; 
-    border-radius: 20px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.columnaIzquierda img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .columnaCentral {
@@ -379,7 +499,7 @@ input {
     flex-direction: column;
     gap: 15px;
     justify-content: center;
-    
+
     p {
         color: variables.$colorPrimario;
         font-weight: bold;
@@ -398,10 +518,10 @@ input {
         padding: 10px 5px;
         font-size: 18px;
         color: #333;
-        
-        &:focus { 
-            outline: none; 
-            border-bottom: 2px solid variables.$colorPrimario; 
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid variables.$colorPrimario;
             background: rgba(variables.$colorPrimario, 0.02);
         }
     }
@@ -411,9 +531,10 @@ input {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    p { 
-        color: #666; 
-        padding: 10px; 
+
+    p {
+        color: #666;
+        padding: 10px;
         line-height: 1.6;
         font-style: italic;
     }
@@ -431,9 +552,9 @@ input {
     cursor: pointer;
     transition: 0.3s;
 
-    &:hover { 
-        background-color: variables.$colorSecundario; 
+    &:hover {
+        background-color: variables.$colorSecundario;
         transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 }
